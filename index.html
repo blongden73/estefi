@@ -21,7 +21,7 @@ h1 {
   top: 10px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-size: 32px;
   padding:0;
   margin:0;
@@ -38,6 +38,19 @@ h3 {
   right: 10px;
   text-align:right;
 }
+
+h4 {
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  display:none;
+}
+
+h4.display {
+  display:block;
+}
+
 .page-wrapper {
   position:absolute;
   top:0;
@@ -46,6 +59,7 @@ h3 {
   bottom:0;
   border:16px solid #121212;
   padding:10px;
+  cursor:crosshair;
 }
 </style>
 <body>
@@ -53,6 +67,33 @@ h3 {
   <h1>Ben Longden Design</h1>
   <h2>Design Director</h2>
   <h3>The Guardian</h3>
+  <h4>A semi motivational message generator</h4>
+  <h4>We're all in this</h4>
+  <h4>If you can dream it</h4>
+  <h4>Believe in</h4>
+  <h4>Where there is a </h4>
+  <h4>The future</h4>
+  <h4>Don't watch</h4>
+  <h4>hello@benlongdendesign.co.uk</h4>
 </div>
+<script>
+  var clickArea = document.querySelector('.page-wrapper');
+  var messages = document.querySelectorAll('h4');
+  console.log('running', messages);
+  messages[0].classList.add('display');
+  clickArea.addEventListener('click', function(){
+    var onDisplay = document.querySelector('.display');
+    var next = document.querySelector('.display + h4')
+
+    if(next) {
+      onDisplay.classList.remove('display');
+      next.classList.add('display');
+    }else {
+      onDisplay.classList.remove('display');
+      messages[0].classList.add('display');
+    }
+
+  });
+</script>
 </body>
 </html>
