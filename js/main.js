@@ -1,10 +1,12 @@
-var clickArea = document.querySelector('.page-wrapper');
-  var messages = document.querySelectorAll('h4');
+var clickArea = document.querySelector('.click-area');
+  var messages = document.querySelectorAll('img');
   console.log('running', messages);
   messages[0].classList.add('display');
   clickArea.addEventListener('click', function(){
+    console.log('click');
+
     var onDisplay = document.querySelector('.display');
-    var next = document.querySelector('.display + h4')
+    var next = document.querySelector('.display + img')
 
     if(next) {
       onDisplay.classList.remove('display');
@@ -13,5 +15,4 @@ var clickArea = document.querySelector('.page-wrapper');
       onDisplay.classList.remove('display');
       messages[0].classList.add('display');
     }
-
   });
