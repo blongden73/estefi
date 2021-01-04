@@ -223,9 +223,13 @@ img.display {
   &.about {
     .about-inner {
       top: 130px;
-      left: 80px;
+      left: 20px;
       right: 40px;
       bottom: unset;
+
+      @include mq($from: desktop) {
+        left: 80px;
+      }
     }
   }
 
@@ -252,7 +256,7 @@ img.display {
   }
 
   p, ul, li {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.4;
     font-family: 'silk serif';
 

@@ -165,9 +165,12 @@ img.display {
         width: 45%; } }
   .about-wrapper.about .about-inner {
     top: 130px;
-    left: 80px;
+    left: 20px;
     right: 40px;
     bottom: unset; }
+    @media all and (min-width: 61.25em) {
+      .about-wrapper.about .about-inner {
+        left: 80px; } }
   .about-wrapper .about-inner {
     top: unset;
     left: 80px;
@@ -186,7 +189,7 @@ img.display {
       .about-wrapper h2 {
         font-size: 30px; } }
   .about-wrapper p, .about-wrapper ul, .about-wrapper li {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.4;
     font-family: 'silk serif'; }
     @media all and (min-width: 61.25em) {
