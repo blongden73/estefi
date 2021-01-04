@@ -41,16 +41,24 @@ function lazy(){
   console.log('running');
   var lazy = document.querySelectorAll('.lazy');
   var screenHeight = window.innerHeight / 1.5;
+  var belowFold = window.innerHeight * 2;
   console.log(lazy);
+  var src1 = lazy[0].dataset.src;
+  var src2 = lazy[1].dataset.src;
+  lazy[0].setAttribute('src', src1);
+  lazy[1].setAttribute('src', src2);
   document.addEventListener('scroll', function(){
     for(i=0; i<lazy.length; i++){
       if(lazy[i].classList.contains('image')){
         var position = lazy[i].getBoundingClientRect();
         var src = lazy[i].dataset.src;
-        if(position.top <= screenHeight && position.top >= -screenHeight) {
-          if(!lazy[i].classList.contains('inview')){
+        if(position.top <= belowFold && position.top >= -screenHeight) {
+          if(!lazy[i].classList.contains('loaded')){
             lazy[i].setAttribute('src', src);
           }
+          lazy[i].classList.add('loaded');
+        }
+        if(position.top <= screenHeight && position.top >= -screenHeight) {
           lazy[i].classList.add('inview');
         }
       } else if(lazy[i].classList.contains('video')) {
