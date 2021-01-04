@@ -215,6 +215,11 @@ img.display {
       @media all and (min-width: 61.25em) {
         .about-wrapper ul.client-list {
           columns: 3; } }
+      .about-wrapper ul.client-list a {
+        color: inherit;
+        text-decoration: none; }
+        .about-wrapper ul.client-list a:hover {
+          text-decoration: underline; }
 
 .center-top {
   height: 100vh;

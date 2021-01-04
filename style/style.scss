@@ -292,6 +292,15 @@ img.display {
       @include mq($from: desktop) {
         columns: 3;
       }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
