@@ -475,12 +475,14 @@ img.display {
   margin-left: 5%;
   margin-top: 1%;
   margin-top: 0px;
+  margin-bottom: 20px;
 
   @include mq($from: desktop) {
     height: 98vh;
     margin-top: 100px;
     width: 98%;
     margin-left: 1%;
+    margin-bottom: unset;
   }
 }
 

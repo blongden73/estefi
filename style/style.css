@@ -364,13 +364,15 @@ img.display {
   height: 40vh;
   margin-left: 5%;
   margin-top: 1%;
-  margin-top: 0px; }
+  margin-top: 0px;
+  margin-bottom: 20px; }
   @media all and (min-width: 61.25em) {
     .fullwidth {
       height: 98vh;
       margin-top: 100px;
       width: 98%;
-      margin-left: 1%; } }
+      margin-left: 1%;
+      margin-bottom: unset; } }
 
 .fullwidth img {
   width: 100%;
