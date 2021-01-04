@@ -221,11 +221,16 @@ img.display {
     top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
-    line-height: 1;
+    line-height: 1.4;
     text-align: center;
     bottom: unset;
-    font-size: 33px;
-    width: 100%; }
+    font-size: 26px;
+    width: 70%; }
+    @media all and (min-width: 61.25em) {
+      .center-top h2 {
+        font-size: 33px;
+        width: 100%;
+        line-height: 1; } }
 
 .gu-video {
   background-color: #f6f6f6;
@@ -303,7 +308,7 @@ img.display {
   .flex .left.text,
   .flex .right.text {
     background-color: transparent;
-    margin-top: 50px; }
+    margin-top: 30px; }
     @media all and (min-width: 61.25em) {
       .flex .left.text,
       .flex .right.text {
@@ -374,7 +379,11 @@ img.display {
 
 .lazy {
   opacity: 0;
-  transform: translateX(-50px); }
+  transform: translateX(-50px);
+  margin-bottom: 20px; }
+  @media all and (min-width: 61.25em) {
+    .lazy {
+      margin-bottom: unset; } }
 
 @keyframes lazy {
   0% {

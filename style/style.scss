@@ -299,11 +299,17 @@ img.display {
     top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
-    line-height: 1;
+    line-height: 1.4;
     text-align: center;
     bottom: unset;
-    font-size: 33px;
-    width: 100%;
+    font-size: 26px;
+    width: 70%;
+
+    @include mq($from: desktop) {
+      font-size: 33px;
+      width: 100%;
+      line-height: 1;
+    }
   }
 }
 
@@ -400,7 +406,7 @@ img.display {
 
   &.text {
     background-color: transparent;
-    margin-top: 50px;
+    margin-top: 30px;
 
     @include mq($from: desktop) {
       margin-top: unset;
@@ -487,6 +493,11 @@ img.display {
 .lazy {
   opacity: 0;
   transform: translateX(-50px);
+  margin-bottom: 20px;
+
+  @include mq($from: desktop) {
+    margin-bottom: unset;
+  }
 }
 
 @keyframes lazy {
