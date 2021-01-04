@@ -394,7 +394,10 @@ img.display {
       margin-left: 1%;
       margin-bottom: unset; } }
   .fullwidth.videozoom {
-    height: 30vh; }
+    display: none; }
+    @media all and (min-width: 61.25em) {
+      .fullwidth.videozoom {
+        display: block; } }
   .fullwidth video {
     width: 100%;
     height: 100%;

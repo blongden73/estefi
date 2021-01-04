@@ -516,7 +516,11 @@ img.display {
   }
 
   &.videozoom {
-    height: 30vh;
+    display: none;
+
+    @include mq($from: desktop) {
+      display: block;
+    }
   }
 
   video {
