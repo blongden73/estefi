@@ -393,6 +393,8 @@ img.display {
       width: 98%;
       margin-left: 1%;
       margin-bottom: unset; } }
+  .fullwidth.videozoom {
+    height: 30vh; }
   .fullwidth video {
     width: 100%;
     height: 100%;

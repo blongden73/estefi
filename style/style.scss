@@ -515,6 +515,10 @@ img.display {
     margin-bottom: unset;
   }
 
+  &.videozoom {
+    height: 30vh;
+  }
+
   video {
     width: 100%;
     height: 100%;
