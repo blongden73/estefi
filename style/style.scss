@@ -2,9 +2,10 @@
 
 @font-face {
     font-family: 'Ogg';
-    src: url('../assets/Ogg-Italic.woff') format('woff');
+    src: url('ogg-italic-webfont.woff2') format('woff2'),
+         url('ogg-italic-webfont.woff') format('woff');
     font-weight: normal;
-    font-style: italic;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Garda Sans';
