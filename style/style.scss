@@ -138,6 +138,10 @@ img.display {
   padding:0;
   padding-bottom: 50vh;
   overflow-y: hidden;
+
+  @include mq($from: desktop) {
+    padding-bottom: 20vh;
+  }
 }
 
 .contact {

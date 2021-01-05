@@ -105,6 +105,9 @@ img.display {
   padding: 0;
   padding-bottom: 50vh;
   overflow-y: hidden; }
+  @media all and (min-width: 61.25em) {
+    .page-wrapper {
+      padding-bottom: 20vh; } }
 
 .contact {
   position: absolute;
