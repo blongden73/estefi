@@ -136,12 +136,8 @@ img.display {
   right:0;
   bottom:0;
   padding:0;
-  padding-bottom: 50vh;
+  padding-bottom: 20vh;
   overflow-y: hidden;
-
-  @include mq($from: desktop) {
-    padding-bottom: 20vh;
-  }
 }
 
 footer {
