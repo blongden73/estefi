@@ -109,6 +109,41 @@ img.display {
     .page-wrapper {
       padding-bottom: 20vh; } }
 
+footer {
+  width: 90.3%;
+  margin-left: 5%;
+  padding-bottom: 20px;
+  border-top: 1px solid #121212;
+  padding-top: 20px; }
+  @media all and (min-width: 61.25em) {
+    footer {
+      width: 98%;
+      margin-left: 1%; } }
+  footer .flex {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0; }
+    footer .flex small {
+      line-height: 1.4; }
+      @media all and (min-width: 61.25em) {
+        footer .flex small {
+          line-height: 1; } }
+    footer .flex h2 {
+      position: relative;
+      font-family: 'silk serif';
+      font-weight: 200;
+      font-size: 26px;
+      line-height: 1.3; }
+      @media all and (min-width: 61.25em) {
+        footer .flex h2 {
+          font-size: 30px;
+          line-height: 1.1; } }
+      footer .flex h2 a {
+        text-decoration: none;
+        color: inherit; }
+        footer .flex h2 a:hover {
+          border-bottom: 1px solid #121212; }
+
 .contact {
   position: absolute;
   top: 20px;
@@ -119,7 +154,8 @@ img.display {
   .contact:hover {
     border-bottom: 1px solid #121212; }
   .contact.about-clicked {
-    opacity: 0; }
+    opacity: 0;
+    pointer-events: none; }
     @media all and (min-width: 61.25em) {
       .contact.about-clicked {
         opacity: 1; } }
@@ -134,7 +170,8 @@ img.display {
   .about:hover {
     border-bottom: 1px solid #121212; }
   .about.contact-clicked {
-    opacity: 0; }
+    opacity: 0;
+    pointer-events: none; }
     @media all and (min-width: 61.25em) {
       .about.contact-clicked {
         opacity: 1; } }
