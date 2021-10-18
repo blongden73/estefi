@@ -452,7 +452,7 @@ footer {
     margin-top: 5px;
 
     @include mq($from: desktop) {
-      margin-top: 100px;
+      margin-top: 260px;
     }
   }
 }
@@ -623,4 +623,19 @@ footer {
 
 video.lazy{
   opacity: 1;
+}
+
+.skills-list {
+  display: block;
+  margin-top: 20px;
+}
+
+.fullheight {
+  height: auto;
+  overflow: none;
+  
+  img {
+    object-fit: none;
+    height: auto;
+  }
 }

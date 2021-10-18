@@ -426,7 +426,7 @@ footer .flex h2 a:hover {
 }
 @media all and (min-width: 61.25em) {
   .flex.padd {
-    margin-top: 100px;
+    margin-top: 260px;
   }
 }
 
@@ -604,6 +604,20 @@ footer .flex h2 a:hover {
 
 video.lazy {
   opacity: 1;
+}
+
+.skills-list {
+  display: block;
+  margin-top: 20px;
+}
+
+.fullheight {
+  height: auto;
+  overflow: none;
+}
+.fullheight img {
+  object-fit: none;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */
