@@ -483,6 +483,7 @@ footer .flex h2 a:hover {
   font-family: "silk serif";
   font-weight: 200;
   font-size: 36px;
+  line-height: 1.1;
 }
 .flex .left.text p,
 .flex .right.text p {
@@ -616,7 +617,7 @@ video.lazy {
   overflow: none;
 }
 .fullheight img {
-  object-fit: none;
+  object-fit: unset;
   height: auto;
 }
 

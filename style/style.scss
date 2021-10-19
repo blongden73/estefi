@@ -501,6 +501,7 @@ footer {
       font-family: 'silk serif';
       font-weight: 200;
       font-size: 36px;
+      line-height: 1.1;
     }
 
     p {
@@ -633,9 +634,9 @@ video.lazy{
 .fullheight {
   height: auto;
   overflow: none;
-  
+
   img {
-    object-fit: none;
+    object-fit: unset;
     height: auto;
   }
 }
