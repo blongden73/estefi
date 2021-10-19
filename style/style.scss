@@ -584,6 +584,17 @@ footer {
     height: 100%;
     object-fit: cover;
   }
+
+  &.non-zoom {
+    @include mq($until: tablet) {
+      height: auto;
+    }
+    img {
+      @include mq($until: tablet) {
+        height: auto;
+      }
+    }
+  }
 }
 
 .fullwidth img {

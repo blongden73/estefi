@@ -566,6 +566,16 @@ footer .flex h2 a:hover {
   height: 100%;
   object-fit: cover;
 }
+@media all and (max-width: 46.24em) {
+  .fullwidth.non-zoom {
+    height: auto;
+  }
+}
+@media all and (max-width: 46.24em) {
+  .fullwidth.non-zoom img {
+    height: auto;
+  }
+}
 
 .fullwidth img {
   width: 100%;
