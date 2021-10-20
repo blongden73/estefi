@@ -555,6 +555,14 @@ footer {
   object-fit: cover;
 }
 
+.padd-half {
+  margin-top: 1%;
+
+  @include mq($from: desktop) {
+    margin-top: 100px;
+  }
+}
+
 .fullwidth {
   width: 90.3%;
   height: 40vh;
