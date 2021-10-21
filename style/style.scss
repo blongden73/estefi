@@ -659,3 +659,23 @@ video.lazy{
     height: auto;
   }
 }
+
+.auto-height {
+  @include mq($from: desktop) {
+    height: auto !important;
+  }
+}
+
+.square-up {
+  @include mq($from: desktop) {
+    height: 31.4vw;
+    width: 100%;
+  }
+}
+
+.no-crop {
+  height: auto !important;
+  img {
+    height: auto !important;
+  }
+}

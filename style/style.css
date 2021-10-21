@@ -640,4 +640,24 @@ video.lazy {
   height: auto;
 }
 
+@media all and (min-width: 61.25em) {
+  .auto-height {
+    height: auto !important;
+  }
+}
+
+@media all and (min-width: 61.25em) {
+  .square-up {
+    height: 31.4vw;
+    width: 100%;
+  }
+}
+
+.no-crop {
+  height: auto !important;
+}
+.no-crop img {
+  height: auto !important;
+}
+
 /*# sourceMappingURL=style.css.map */
