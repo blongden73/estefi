@@ -660,4 +660,14 @@ video.lazy {
   height: auto !important;
 }
 
+.SOTD-BADGE {
+  position: fixed;
+  left: 0;
+  top: 120px;
+  z-index: 10000;
+}
+.SOTD-BADGE img {
+  width: 30px;
+}
+
 /*# sourceMappingURL=style.css.map */

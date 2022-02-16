@@ -679,3 +679,14 @@ video.lazy{
     height: auto !important;
   }
 }
+
+.SOTD-BADGE {
+  position: fixed;
+  left: 0;
+  top: 120px;
+  z-index: 10000;
+
+  img {
+    width: 30px;
+  }
+}
