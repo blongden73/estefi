@@ -570,6 +570,10 @@ footer .flex h2 a:hover {
     display: block;
   }
 }
+.fullwidth.videozoom.show-mobile {
+  display: block;
+  height: auto;
+}
 .fullwidth video {
   width: 100%;
   height: 100%;

@@ -585,6 +585,11 @@ footer {
     @include mq($from: desktop) {
       display: block;
     }
+
+    &.show-mobile {
+      display: block;
+      height: auto;
+    }
   }
 
   video {
