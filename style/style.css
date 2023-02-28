@@ -381,7 +381,7 @@ footer .flex h2 a:hover {
 }
 .center-top svg {
   position: absolute;
-  top: 45%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
@@ -389,6 +389,7 @@ footer .flex h2 a:hover {
 @media all and (min-width: 61.25em) {
   .center-top svg {
     width: unset;
+    top: 45%;
   }
 }
 .center-top h2 {
@@ -710,6 +711,7 @@ video.lazy {
   left: 0;
   top: 120px;
   z-index: 10000;
+  display: none;
 }
 .SOTD-BADGE img {
   width: 30px;

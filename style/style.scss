@@ -418,13 +418,14 @@ footer {
 
   svg {
       position: absolute;
-      top: 45%;
+      top: 49%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 90%;
 
       @include mq($from: desktop) {
         width: unset;
+        top: 45%;
       }
   }
 
@@ -740,6 +741,7 @@ video.lazy{
   left: 0;
   top: 120px;
   z-index: 10000;
+  display: none;
 
   img {
     width: 30px;
