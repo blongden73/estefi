@@ -74,6 +74,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Saol Display';
+  src: url('../assets/SaolDisplay-ThinItalic.woff2') format('woff2'),
+      url('../assets/SaolDisplay-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
 
 body {
   font-family: 'Maison Neue';
@@ -418,7 +426,7 @@ footer {
 
   svg {
       position: absolute;
-      top: 49%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 90%;
@@ -431,7 +439,7 @@ footer {
 
   h2 {
     position: absolute;
-    top: 58%;
+    top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
@@ -443,6 +451,7 @@ footer {
 
     @include mq($from: desktop) {
       font-size: 50px;
+      top: 58%;
       width: 100%;
       line-height: 1;
     }
