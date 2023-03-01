@@ -83,6 +83,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Saol Display Light';
+  src: url('../assets/SaolDisplay-Light.woff2') format('woff2'),
+      url('../assets/SaolDisplay-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: 'Maison Neue';
   margin:0;
@@ -103,11 +112,11 @@ h1, h2, h3, h4 {
 h2 {
   position: absolute;
   bottom: 10px;
-  font-family: 'Saol Display';
+  font-family: 'Saol Display Light';
 }
 
 h3 {
-  font-family: 'Saol Display';
+  font-family: 'Saol Display Light';
 }
 
 h4 {
@@ -229,7 +238,7 @@ footer {
 
     h2 {
       position: relative;
-      font-family: 'Saol Display';
+      font-family: 'Saol Display Light';
       font-weight: 200;
       font-size: 26px;
       line-height: 1.3;
@@ -561,7 +570,7 @@ footer {
       font-weight: 200;
       font-size: 36px;
       line-height: 1.1;
-      font-family: 'Saol Display';
+      font-family: 'Saol Display Light';
     }
 
     p {
