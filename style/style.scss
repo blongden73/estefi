@@ -433,6 +433,12 @@ footer {
   position: relative;
   z-index: 99;
 
+  @include mq($from: desktop) {
+    height: auto;
+    padding-top: 170px;
+    padding-bottom: 80px;
+  }
+
   svg {
       position: absolute;
       top: 50%;
@@ -442,7 +448,15 @@ footer {
 
       @include mq($from: desktop) {
         width: unset;
-        top: 45%;
+        top: 150px;
+        transform: translate(-50%, -50%);
+        position: relative;
+        top: unset;
+        left: unset;
+        transform: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
       }
   }
 
@@ -454,15 +468,20 @@ footer {
     line-height: 1.4;
     text-align: center;
     bottom: unset;
-    font-size: 34px;
-    width: 70%;
+    font-size: 22px;
+    width: 90%;
     font-weight: 200;
 
     @include mq($from: desktop) {
-      font-size: 50px;
-      top: 58%;
+      font-size: 40px;
+      top: 280px;
       width: 100%;
       line-height: 1;
+      position: relative;
+      top: unset;
+      left: unset;
+      transform: none;
+      margin-top: 20px;
     }
   }
 }
@@ -764,4 +783,68 @@ video.lazy{
   img {
     width: 30px;
   }
+}
+
+.showreel {
+  width: 100%;
+  height: auto;
+  z-index: -30;
+  position: relative;
+  margin-bottom: 100px;
+
+  @include mq($until: desktop) {
+    display: none;
+  }
+}
+
+
+.slider {
+  width: 5520px;
+  margin: auto;
+  overflow: visible;
+  margin-bottom: 230px;
+}
+.slider ul {
+  display: flex;
+  padding: 0;
+  animation: cambio 70s infinite linear;
+  vertical-align: middle;
+  align-items: center;
+}
+.slider li {
+  padding:0 10px;
+  list-style: none;
+  width: 200px;
+  margin-right: 60px;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  flex-direction: column;
+}
+.slider img {
+  max-width: fit-content !important;
+  height: auto !important;
+  width: 100%;
+}
+
+.slider img.max-height {
+  max-height: 90px;
+}
+
+.slider img.clinique {
+  max-height: 74px;
+}
+
+.slider img.new-balance {
+  max-height: 124px;
+}
+
+.slider img.dts {
+  height: 18px !important;
+  width: auto;
+}
+
+@keyframes cambio {
+  from {margin-left: 0%}
+  to {margin-left: -100%}
 }
