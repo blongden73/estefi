@@ -829,19 +829,22 @@ video.lazy{
 
 .slider img.max-height {
   max-height: 90px;
+  width: auto !important;
 }
 
 .slider img.clinique {
   max-height: 74px;
+  width: auto !important;
 }
 
 .slider img.new-balance {
   max-height: 124px;
+  width: auto !important;
 }
 
 .slider img.dts {
   height: 18px !important;
-  width: auto;
+  width: auto !important;
 }
 
 @keyframes cambio {
