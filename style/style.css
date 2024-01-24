@@ -59,7 +59,7 @@
   font-style: normal;
   font-display: swap;
 }
-body {
+e body {
   font-family: "Maison Neue";
   margin: 0;
   padding: 0;
@@ -226,6 +226,7 @@ footer .flex h2 a:hover {
   z-index: 101;
   cursor: pointer;
   font-size: 25px;
+  font-family: "Maison Neue";
 }
 .contact:hover {
   border-bottom: 1px solid #121212;
@@ -247,6 +248,7 @@ footer .flex h2 a:hover {
   z-index: 101;
   cursor: pointer;
   font-size: 25px;
+  font-family: "Maison Neue";
 }
 .about:hover {
   border-bottom: 1px solid #121212;
@@ -269,7 +271,7 @@ footer .flex h2 a:hover {
   overflow: scroll;
   top: 0;
   width: 0;
-  background-color: #ece1ef;
+  background-color: #ff5300;
   z-index: 100;
   transition: all ease-in-out 0.5s;
 }
@@ -381,8 +383,8 @@ footer .flex h2 a:hover {
 }
 @media all and (min-width: 61.25em) {
   .center-top {
-    height: auto;
-    padding-top: 170px;
+    height: 60vh;
+    padding-top: 30vh;
     padding-bottom: 80px;
   }
 }
@@ -429,7 +431,7 @@ footer .flex h2 a:hover {
     top: unset;
     left: unset;
     transform: none;
-    margin-top: 20px;
+    margin-top: 50px;
   }
 }
 
