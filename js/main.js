@@ -115,7 +115,7 @@ function contact(){
 }contact();
 
 function logo() {
-  var logo = document.querySelector('.main-logo');
+  var logo = document.querySelector('.contact');
   var mono = document.querySelector('.monogram');
 
   document.addEventListener('scroll', function(){
