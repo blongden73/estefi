@@ -114,9 +114,17 @@
 
 <div class="project-wrapper">
     <div class="full">
-        <div class="project-image video">
+        <div class="project-image video desktop">
             <div class="vimeo-wrapper">
                 <iframe src="https://player.vimeo.com/video/993112224?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
+                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="full">
+        <div class="project-image video mobile">
+            <div class="vimeo-wrapper">
+                <iframe src="https://player.vimeo.com/video/993460730?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
                     frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
         </div>
@@ -422,7 +430,21 @@
         padding-top: 0;
     }
 
+    .project-image.video.desktop {
+        display: block;
+    }
+
+    .project-image.video.mobile {
+        display: none;
+    }
+
     @media only screen and (max-width: 600px) {
+        .project-image.video.desktop {
+            display: none;
+        }
+        .project-image.video.mobile {
+            display: block;
+        }
         .project-image.video {
             height: 79vh;  
         }
