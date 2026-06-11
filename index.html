@@ -5,6 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estefi Panizza Art Direction</title>
     <style>
+                            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalMonoWebfont.woff2') format('woff2'),
+                    url('NBInternationalMonoWebfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalRegularWebfont.woff2') format('woff2'),
+                    url('NBInternationalRegularWebfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalLightItalicWebfont.woff2') format('woff2'),
+                    url('NBInternationalLightItalicWebfont.woff') format('woff');
+                font-weight: 300;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalItalicWebfont.woff2') format('woff2'),
+                    url('NBInternationalItalicWebfont.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalBoldWebfont.woff2') format('woff2'),
+                    url('NBInternationalBoldWebfont.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalLightWebfont.woff2') format('woff2'),
+                    url('NBInternationalLightWebfont.woff') format('woff');
+                font-weight: 300;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'NB International';
+                src: url('NBInternationalBoldItalicWebfont.woff2') format('woff2'),
+                    url('NBInternationalBoldItalicWebfont.woff') format('woff');
+                font-weight: bold;
+                font-style: italic;
+                font-display: swap;
+            }
+
+        /* --- CSS Variables for the Opposite Wheel Math --- */
+        :root {
+            --img-h: 25vw;
+            --img-gap: 20px; /* Updated to 20px exactly */
+        }
+
         /* --- Reset & Base Styles --- */
         * {
             margin: 0;
@@ -13,11 +82,16 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            overflow: hidden; /* Hide scrollbars for custom scroll */
-            cursor: default;
+            font-family:'NB International', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f0f0f0; 
+            color: #111;
+            overflow: hidden; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Seamless Teleportation Class --- */
+        .no-transition, .no-transition * {
+            transition: none !important;
         }
 
         /* --- Navigation --- */
@@ -33,7 +107,8 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            mix-blend-mode: difference;
+            color: #fff;
+            mix-blend-mode: difference; 
         }
 
         nav .nav-links {
@@ -41,224 +116,258 @@
             gap: 2rem;
         }
 
-        /* --- Infinite Scroll Container --- */
-        .scroll-container {
-            position: relative;
-            height: 100vh;
+        nav a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* --- Split Layout Container --- */
+        .split-layout {
+            display: flex;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            height: 100vh;
+            position: relative;
         }
 
-        .scroll-list {
+        /* =========================================
+           LEFT COLUMN: TEXT (Moves UP, Masked)
+           ========================================= */
+        .left-col {
+            width: 55%;
+            height: 100%;
+            position: relative;
+        }
+
+        .text-mask {
             position: absolute;
-            top: 0;
+            top: 35vh; 
+            left: 5vw;
+            right: 0;
+            bottom: 0; 
+            overflow: hidden; 
+            padding-top: 2px; 
+            margin-top: -2px;
+        }
+
+        .text-track {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            will-change: transform;
+            align-items: flex-start;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- Project Items --- */
         .project-item {
-            font-size: 5vw;
-            font-weight: 400;
-            text-transform: uppercase;
-            padding: 1rem 0;
-            white-space: nowrap;
+            display: flex;
+            align-items: center; 
+            margin-bottom: 2vh; 
             cursor: pointer;
-            color: rgba(130, 130, 130, 0.917);
-            transition: color 0.3s ease;
         }
 
-        .project-item:hover {
-            color: rgba(255, 255, 255, 1);
+        .project-title {
+            font-size: 4vw;
+            font-weight: 500;
+            letter-spacing: -2px;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.9); 
+            transition: color 0.5s ease;
+            white-space: nowrap;
+        }
+
+        .project-item.active .project-title {
+            color: rgba(0, 0, 0, 0.9);
         }
 
         .project-details {
-            font-size: 1rem;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 2rem;
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- Hover Image Reveal --- */
-        .hover-image-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 400px;
-            height: 500px;
-            pointer-events: none;
+            margin-left: 2rem; 
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            color: rgba(0, 0, 0, 0.6);
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.8);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            z-index: 0;
-            overflow: hidden;
+            transform: translateX(-15px);
+            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
         }
 
-        .hover-image-container.active {
+        .project-item.active .project-details {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+            transform: translateX(0);
+            transition-delay: 0.2s; 
         }
 
-        .hover-image-container img {
+        /* =========================================
+           RIGHT COLUMN: IMAGES (Moves DOWN, Unmasked)
+           ========================================= */
+        .right-col {
+            width: 45%;
+            height: 100%;
+            position: relative;
+        }
+
+        .image-track {
+            position: absolute;
+            top: 35vh; 
+            left: 0;
+            right: 5vw;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .image-wrapper {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: var(--img-h); 
+            transform-origin: center;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            
+            opacity: 0.15; 
+            transform: scale(1);
+        }
+
+        .image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .hover-image-container img.active {
+        .image-wrapper.active {
             opacity: 1;
+            transform: scale(1);
         }
+
+        .text-overlay-panel {
+            background-color: rgb(240 240 240 / 90%);
+            position: absolute;
+            top: 4vw;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Estefi Panizza — Art Direction</div>
-        <div class="nav-links">
-            <div>Contact</div>
-            <div><a href="/about.html">About</a></div>
+        <div class="logo">
+            <a href="index.html">Estefi Panizza — Art Direction</a>
         </div>
+        <!-- <div class="nav-links">
+            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="about.html">About</a></div>
+        </div> -->
     </nav>
 
-    <div class="hover-image-container" id="hover-container">
-        <img src="new-images/sj-1.jpg" id="img-1" alt="Fashion 1">
-        <img src="new-images/bumble-1.jpg" id="img-2" alt="Fashion 2">
-        <img src="new-images/spanx-1.jpg" id="img-3" alt="Fashion 3">
-        <img src="new-images/fs-1.jpg" id="img-4" alt="Fashion 4">
-        <img src="new-images/spanx-2.jpg" id="img-5" alt="Fashion 5">
-        <img src="new-images/dts-1.jpg" id="img-6" alt="Fashion 6">
-    </div>
-
-    <div class="scroll-container">
-        <div class="scroll-list" id="scroll-list">
+    <div class="split-layout">
+        <div class="left-col">
+            <div class="text-mask">
+                <div class="text-overlay-panel"></div>
+                <div class="text-track" id="text-track"></div>
+            </div>
+        </div>
+        <div class="right-col">
+            <div class="image-track" id="image-track"></div>
         </div>
     </div>
 
     <script>
-        // --- Data Array ---
-        const projects = [
-            { title: "Sana Jardin", location: "London", year: "2025", imgId: "img-1" },
-            { title: "Bumble", location: "Los Angeles", year: "2023", imgId: "img-2" },
-            { title: "Spanx", location: "New York", year: "2019", imgId: "img-3" },
-            { title: "Four Seasons", location: "Miami / Puerto Rico", year: "2018", imgId: "img-4" },
-            { title: "Spanx", location: "Miami / Puerto Rico", year: "2018", imgId: "img-5" },
-            { title: "Death To Stock", location: "Buenos Aires", year: "2018", imgId: "img-6" }
+        const originalProjects = [
+            { title: "Sana Jardin", details: "London ", date: "2026", imgSrc: "/new-images/sj-1.jpg" },
+            { title: "Bumble", details: "Los Angeles ", date: "2026", imgSrc: "/new-images/bumble-1.jpg" },
+            { title: "Spanx NYC", details: "New York ", date: "2026", imgSrc: "/new-images/spanx-1.jpg" },
+            { title: "Four Seasons", details: "Miami ", date: "2026", imgSrc: "/new-images/fs-1.jpg" },
+            { title: "Spanx PR", details: "Puerto Rico ", date: "2026", imgSrc: "/new-images/spanx-2.jpg" },
+            { title: "Death To Stock", details: "Buenos Aires ", date: "2026", imgSrc: "/new-images/dts-1.jpg" }
         ];
 
-        const scrollList = document.getElementById('scroll-list');
-        const hoverContainer = document.getElementById('hover-container');
-        const images = hoverContainer.querySelectorAll('img');
+        const N = originalProjects.length;
+        const infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
 
-        // --- 1. Populate the List (Tripled for infinite looping) ---
-        function createListElements() {
-            // We loop the array 3 times to ensure there's enough content to scroll infinitely
-            for (let i = 0; i < 3; i++) {
-                projects.forEach(project => {
-                    const item = document.createElement('div');
-                    item.classList.add('project-item');
-                    item.textContent = project.title;
-                    item.dataset.img = project.imgId;
+        const textTrack = document.getElementById('text-track');
+        const imageTrack = document.getElementById('image-track');
+        
+        let activeIndex = N; 
+        let snapTimeout;
 
-                    const details = document.createElement('div');
-                    details.classList.add('project-details');
-                    details.innerHTML = `<span>${project.location}</span><span>${project.year}</span>`;
+        function init() {
+            infiniteProjects.forEach((project, index) => {
+                // Text Setup
+                const textItem = document.createElement('div');
+                textItem.classList.add('project-item');
+                textItem.innerHTML = `
+                    <div class="project-title">${project.title}</div>
+                    <div class="project-details">${project.details}<br/>${project.date}</div>
+                `;
+                textItem.addEventListener('click', () => updateActiveProject(index));
+                textTrack.appendChild(textItem);
 
-                    item.addEventListener('mouseenter', () => activateImage(project.imgId));
-                    item.addEventListener('mouseleave', deactivateImage);
+                // Image Setup
+                const imgItem = document.createElement('div');
+                imgItem.classList.add('image-wrapper');
+                
+                // Using the CSS variable gap directly in JS
+                imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
+                imgItem.innerHTML = `<img src="${project.imgSrc}" alt="${project.title}">`;
+                imageTrack.appendChild(imgItem);
+            });
 
-                    scrollList.appendChild(item);
-                    scrollList.appendChild(details);
-                });
-            }
+            setTimeout(() => updateActiveProject(N), 100);
         }
 
-        // --- 2. Smooth Infinite & Manual Scroll Animation ---
-        let currentScroll = 0;
-        let speed = 0.8; // Auto-scroll speed
+        function updateActiveProject(newIndex) {
+            activeIndex = newIndex;
+            const textItems = document.querySelectorAll('.project-item');
+            const imageItems = document.querySelectorAll('.image-wrapper');
 
-        // Desktop Wheel Scroll
-        window.addEventListener('wheel', (e) => {
-            currentScroll -= e.deltaY * 0.8; // The 0.8 acts as a dampener for smoother trackpad feel
-        });
-
-        // Mobile Touch Scroll
-        let touchStartY = 0;
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
-        window.addEventListener('touchmove', (e) => {
-            const touchY = e.touches[0].clientY;
-            const deltaY = touchStartY - touchY;
-            currentScroll -= deltaY * 1.5; // Multiplier adjusts touch sensitivity
-            touchStartY = touchY;
-        });
-
-        function animateScroll() {
-            // Constant auto-scroll
-            currentScroll -= speed;
+            const textOffset = textItems[activeIndex].offsetTop;
+            textTrack.style.transform = `translateY(-${textOffset}px)`;
             
-            // Calculate one-third of the total height (one full set of projects)
-            const singleSetHeight = scrollList.getBoundingClientRect().height / 3;
+            // Reusing the exact exact CSS variables to keep math completely unified
+            imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
 
-            // Reset position to create a seamless loop in BOTH directions
-            if (currentScroll <= -singleSetHeight) {
-                // If scrolling down naturally
-                currentScroll += singleSetHeight;
-            } else if (currentScroll > 0) {
-                // If the user scrolls backwards (upwards) past 0
-                currentScroll -= singleSetHeight;
-            }
+            textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+            imageItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
 
-            scrollList.style.transform = `translateY(${currentScroll}px)`;
-            requestAnimationFrame(animateScroll);
-        }
-
-        // --- 3. Cursor Follow Effect ---
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            hoverContainer.style.left = `${mouseX}px`;
-            hoverContainer.style.top = `${mouseY}px`;
-        });
-
-        function activateImage(imgId) {
-            hoverContainer.classList.add('active');
-            images.forEach(img => img.classList.remove('active'));
-            document.getElementById(imgId).classList.add('active');
+            clearTimeout(snapTimeout);
             
-            // Slow down the auto-scroll when hovering
-            speed = 0.2; 
+            snapTimeout = setTimeout(() => {
+                let needsSnap = false;
+                let mappedIndex = activeIndex;
+
+                if (activeIndex < N) {
+                    mappedIndex = activeIndex + N;
+                    needsSnap = true;
+                } 
+                else if (activeIndex >= 2 * N) {
+                    mappedIndex = activeIndex - N;
+                    needsSnap = true;
+                }
+
+                if (needsSnap) {
+                    document.body.classList.add('no-transition');
+                    
+                    activeIndex = mappedIndex;
+                    
+                    const snapTextOffset = textItems[activeIndex].offsetTop;
+                    textTrack.style.transform = `translateY(-${snapTextOffset}px)`;
+                    imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
+
+                    textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+                    imageItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+
+                    void document.body.offsetWidth; 
+                    
+                    document.body.classList.remove('no-transition');
+                }
+            }, 1000); 
         }
 
-        function deactivateImage() {
-            hoverContainer.classList.remove('active');
-            // Resume normal auto-scroll speed
-            speed = 0.8; 
-        }
+        window.addEventListener('resize', () => updateActiveProject(activeIndex));
 
-        // --- Initialize ---
-        createListElements();
-        animateScroll();
-
+        init();
     </script>
 </body>
 </html>
