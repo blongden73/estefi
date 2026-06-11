@@ -1,652 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Estefi Panizza | Art Direction & Graphic Design</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#2b5797">
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" type="text/css" href="style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estefi Panizza Art Direction</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            overflow: hidden; /* Hide scrollbars for custom scroll */
+            cursor: default;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            z-index: 100;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            mix-blend-mode: difference;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* --- Infinite Scroll Container --- */
+        .scroll-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-list {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            will-change: transform;
+        }
+
+        /* --- Project Items --- */
+        .project-item {
+            font-size: 5vw;
+            font-weight: 400;
+            text-transform: uppercase;
+            padding: 1rem 0;
+            white-space: nowrap;
+            cursor: pointer;
+            color: rgba(130, 130, 130, 0.917);
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .project-details {
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 2rem;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Hover Image Reveal --- */
+        .hover-image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 500px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hover-image-container.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .hover-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hover-image-container img.active {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-<div class="header">
-    <div class="contact">
-        Contact
+
+    <nav>
+        <div class="logo">Estefi Panizza — Art Direction</div>
+        <div class="nav-links">
+            <div>Contact</div>
+            <div>About</div>
+        </div>
+    </nav>
+
+    <div class="hover-image-container" id="hover-container">
+        <img src="new-images/sj-1.jpg" id="img-1" alt="Fashion 1">
+        <img src="new-images/bumble-1.jpg" id="img-2" alt="Fashion 2">
+        <img src="new-images/spanx-1.jpg" id="img-3" alt="Fashion 3">
+        <img src="new-images/fs-1.jpg" id="img-4" alt="Fashion 4">
+        <img src="new-images/spanx-2.jpg" id="img-5" alt="Fashion 4">
+        <img src="new-images/dts-1.jpg" id="img-6" alt="Fashion 4">
     </div>
-    <div class="name">
-        ESTEFI PANIZZA
-    </div>
-    <div class="about">
-        About
-    </div>
-</div>
-  <div class="about-wrapper about">
-    <div class="close about-close">
-      <svg width="55" height="53" viewBox="0 0 55 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#000" stroke-width="2" d="M53.707 1.203L3.203 51.707M52.15 51.565L1.646 1.061"/></svg>
-    </div>
-    <div class="about-inner">
-    <h2>Freelance Art Director<br /> Prev: Freelance Art Director at Sweaty Betty <br /> Prev: Art Director @ Bandier </h2>
 
-    <h2>Senior Art Director based in East London, with over 8 years of experience in the fashion, beauty, wellness, and activewear industries. I have a background in graphic design and psychology that allows me to create innovative design solutions and drive growth through compelling visual storytelling.</h2>
-
-    <h2>Passionate, hard-working and creatively driven.</h2>
-
-    <h2> My client work includes Speedo, Bandier, Sana Jardin, New Balance, Clinique, Sweatybetty, and Death to Stock, among others.</h2>
-
-    <p><strong>— Selected Clients</strong></p>
-    <ul class="client-list">
-      <li>Sweaty Betty</li>
-      <li>Death To Stock</li>
-      <li>Clinique</li>
-      <li>Clokkemaker</li>
-      <li>Bandier</li>
-      <li>Flowerbx</li>
-      <li>Numoon</li>
-      <li>Fenalla Jewellery</li>
-      <li>Maya</li>
-      <li>Dearest</li>
-      <li>Mamma Wellbeing</li>
-      <li>States of Mind</li>
-      <li>Oppo Brothers</li>
-      <li>Macrame</li>
-      <li>Leve Restaurant</li>
-      <li>Poster Haus</li>
-      <li>21/25 Magazine</li>
-      <li>YTECH</li>
-      <li>East To West Capital</li>
-      <li>Sundance</li>
-      <li>Meiyume (DB)</li>
-      <li>Kaleidoscope Trust (DB)</li>
-      <li>Education Support (DB)</li>
-      <li>Logic (DB)</li>
-      <li>Swarovski (DB)</li>
-    </ul>
-
-    <p><strong>— Featured In</strong></p>
-    <ul class="client-list">
-      <li><a href="https://www.creativeboom.com/inspiration/25-exciting-female-graphic-designers-and-illustrators-to-follow/">Creative Boom</a></li>
-      <li><a href="https://www.shillingtoneducation.com/blog/meet-estefi-panizza-shillington-graduate-designer-design-bridge/">Shillington</a></li>
-      <li>Adobe Residency</li>
-      <li><a href="https://the-dots.com/users/estefania-panizza-454289">The Dots</a></li>
-      <li><a href="https://medium.com/@umbrellastudios/freelancer-friday-estefi-panizza-c7f0f99036f5">Umbrella Studios</a></li>
-    </ul>
-
-    <p><strong>— Services</strong></p>
-    <ul class="client-list">
-      <li>Art Direction</li>
-      <li>Graphic Design</li>
-      <li>Brand Development</li>
-      <li>Team Leadership</li>
-      <li>Figma</li>
-      <li>Photo Shoot Production</li>
-      <li>All Adobe Creative Suite</li>
-      <li>Photography</li>
-      <li>Typography</li>
-      <li>Trend Analysis</li>
-    </ul>
-
-    </div>
-  </div>
-
-  <div class="about-wrapper contact">
-    <div class="close contact-close">
-      <svg width="55" height="53" viewBox="0 0 55 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#000" stroke-width="2" d="M53.707 1.203L3.203 51.707M52.15 51.565L1.646 1.061"/></svg>
-    </div>
-    <div class="about-inner">
-    <h2>If you would like to contact me regarding a project please email.</h2>
-
-    <h2>
-      <a target="_blank" href="mailto:hello@estefi-panizza.com">hello@estefi-panizza.com</a>
-      <br/><br/>
-      +44 (0) 7931372167
-      <br/>
-      <a target="_blank" href="https://instagram.com/estefipanizza">@estefipanizza</a>
-      <a target="_blank" href="https://www.linkedin.com/in/estefania-panizza-59434a169/">Linkedin</a>
-    </h2>
-
-    </div>
-  </div>
-
-<div class="project-wrapper">
-    <div class="full">
-        <div class="project-image video desktop">
-            <div class="vimeo-wrapper">
-                <iframe src="https://player.vimeo.com/video/993112224?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
-                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div class="scroll-container">
+        <div class="scroll-list" id="scroll-list">
             </div>
-        </div>
     </div>
-    <div class="full">
-        <div class="project-image video mobile">
-            <div class="vimeo-wrapper">
-                <iframe src="https://player.vimeo.com/video/993460730?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
-                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-details">
-            <h3>Sana Jardin</h3>
-            <p>Art Direction — 2023/24</p>
-            <p>Re-positioning and re-branding for Sana Jardin Perfumes. This shoot encapsulates what it means to be on a transformative journey and how SJ embodies modern alchemy in the lives of women. Alchemising energy to embrace change and alter frequency with mood-raising fragrances. The brand takes the power of petals and transmutes their life force onto people’s skin, honouring the ancient modality of flower healing.</p>
-            <p>Photographer: Franco Dupuy & Vicky Polak Videographer: Santiago Bernaldo De Quiros</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-01-089_v3.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-02-184_v3.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-04-269.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-14-1055_v3.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/Sana_Jadin_Bottle_50_Patchouli_0326.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-02-184_v3-1.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/FD231011-04-269-1.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/Sana_Jadin_Bottle_2_Patchouli_0407.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/Sana_Jardin_5_Model_0844.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/Sana_Jardin_5_Model_0587 2.jpg">
-        </div>
-    </div>
-</div>
 
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Speedo — Fastskin Campaign</h3>
-            <p>Art Direction — 2024</p>
-            <p>Photographer: Richard Johnson</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/speedo3.jpeg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/speedo2.jpeg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/speedo1.jpeg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/speedo5.jpeg">
-        </div>
-    </div>
-</div>
+    <script>
+        // --- Data Array ---
+        const projects = [
+            { title: "Sana Jardin", location: "London", year: "2025", imgId: "img-1" },
+            { title: "Bumble", location: "Los Angeles", year: "2023", imgId: "img-2" },
+            { title: "Spanx", location: "New York", year: "2019", imgId: "img-3" },
+            { title: "Four Seasons", location: "Miami / Puerto Rico", year: "2018", imgId: "img-4" },
+            { title: "Spanx", location: "Miami / Puerto Rico", year: "2018", imgId: "img-5" },
+            { title: "Death To Stock", location: "Buenos Aires", year: "2018", imgId: "img-6" }
+        ];
 
+        const scrollList = document.getElementById('scroll-list');
+        const hoverContainer = document.getElementById('hover-container');
+        const images = hoverContainer.querySelectorAll('img');
 
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Death To Stock — Sojourn</h3>
-            <p>Art Direction — 2023</p>
-            <p>Creative Concept & Art Direction for Death To Stock to capture the feeling of travel and remote working through the lens of high fashion & luxury.</p>
-            <p>The trend Sojourn- originally meaning a temporary stay- redefines work as a permanent alignment with personal values and lifestyles. It advocates for careers that resonate with one's interests and passions, transforming professional endeavours into extensions of personal identity. This new luxury measures success by how well work harmonizes with personal fulfilment.</p>
-            <p>Photographer: Franco Dupuy</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_SOJOURN_Franco_Dupuy_10768.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_SOJOURN_Franco_Dupuy_10769.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_SOJOURN_Franco_Dupuy_10773.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_SOJOURN_Franco_Dupuy_10774.jpg">
-        </div>
-    </div>
-</div>
+        // --- 1. Populate the List (Tripled for infinite looping) ---
+        function createListElements() {
+            // We loop the array 3 times to ensure there's enough content to scroll infinitely
+            for (let i = 0; i < 3; i++) {
+                projects.forEach(project => {
+                    // Create title
+                    const item = document.createElement('div');
+                    item.classList.add('project-item');
+                    item.textContent = project.title;
+                    item.dataset.img = project.imgId;
 
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Death To Stock — Rebel Prep</h3>
-            <p>Art Direction — 2023</p>
-            <p>Creative Concept & Art Direction for Death To Stock, this editorial embodies the spirit of unity through diversity, where unique individuals come together, bonded by their passion for football.</p>
-            <p>This trend celebrates how the sport transcends differences, merging distinct skills and personalities into a harmonious team. In an increasingly digital age, offline interactions and sports like football are becoming vital social connectors. Rebel Prep is a testament to the power of collaboration, showing that when diverse minds unite for a common goal, extraordinary things happen.</p>
-            <p>Photographer: Franco Dupuy</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_Rebel_Prep_Franco_Dupuy_10872 (1).jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_Rebel_Prep_Franco_Dupuy_10848 (1).jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_Rebel_Prep_Franco_Dupuy_10865 (1).jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_Rebel_Prep_Franco_Dupuy_10873 (1).jpg">
-        </div>
-    </div>
-</div>
+                    // Create sub-details
+                    const details = document.createElement('div');
+                    details.classList.add('project-details');
+                    details.innerHTML = `<span>${project.location}</span><span>${project.year}</span>`;
 
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Death To Stock — Raising The Game</h3>
-            <p>Art Direction — 2023</p>
-            <p>Creative Concept & Art Direction for Death To Stock. This drop is all about dreaming big and living large. It's a trend that encourages people to push boundaries, embrace extravagance, and pursue their wildest dreams with gusto. Whether it's in fashion, travel, or personal pursuits, this trend challenges the status quo by redefining what it means to live life to the fullest. It's about indulging in opulence, surpassing limitations, and creating a lifestyle that's uniquely lavish and uniquely yours. So why settle for ordinary when you can raise the game and live a life that's truly extraordinary?</p>
-            <p>Photographer: Franco Dupuy</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_raising_the_game_Franco_Dupuy_10532.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_raising_the_game_Franco_Dupuy_10409.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_raising_the_game_Franco_Dupuy_10410.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS_raising_the_game_Franco_Dupuy_10404.jpg">
-        </div>
-    </div>
-</div>
+                    // Hover Events
+                    item.addEventListener('mouseenter', () => activateImage(project.imgId));
+                    item.addEventListener('mouseleave', deactivateImage);
 
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Death To Stock — Hazy Eighties</h3>
-            <p>Art Direction — 2022</p>
-            <p>Step into a retro reverie with the captivating trend of "Hazy Eighties." Transport yourself to an era of neon lights, synth-wave beats, and vibrant aesthetics that evoke a sense of nostalgia and fantasy. Immerse yourself in a world where bold fashion, iconic movies, and iconic icons reign supreme. It's a journey back in time that allows you to experience the dreamlike essence of the 80s and embrace the limitless possibilities of your imagination.</p>
-            <p>Photographer: Ivan Resnik</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_00013.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_0008.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_00050.jpg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_00023.jpg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_00042.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/DTS__80s-shoot_by-Ivan-Resnik_00053.jpg">
-        </div>
-    </div>
-</div>
-
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Death To Stock — Every day objects</h3>
-            <p>Art Direction — 2022</p>
-            <p>Every object tells a story. The object, when enchanted, through unique experience, becomes our memory. When brought together by someone that appreciates their beauty, we are reminded of this journey. Every moment of our lives is shown through these objects and the stories they carry with them.</p>
-            <p>Photographer: Daniel Faro</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-8.jpeg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-2.jpeg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-3.jpeg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-4.jpeg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-5.jpeg">
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-6.jpeg">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/dts-objects-7.jpeg">
-        </div>
-    </div>
-</div>
-
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>Sweaty Betty</h3>
-            <p>Art Direction — 2023</p>
-            <p>Brand identity and look and feel for the Sweaty Betty first concept store ‘The Powerhouse' at London’s Battersea Power Station. The store captures a feeling of strength and energy, so the visual identity needed to reflect this and we did this by utilising the new colour developed in collaboration with Pantone alongside high energy imagery and an animated typographic treatment.</p>
-            <p>CD: Jessica Wells</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/pBGpuemSralAWvi5kNNSy0By3WU.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image video desktop">
-            <div class="vimeo-wrapper">
-                <iframe src="https://player.vimeo.com/video/994611130?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
-                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb1.gif">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/841A5BE5-48B6-432C-8BC1-7AC0D4D5B006.gif">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb-phone-small.gif">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb3.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb-billboard-3.png">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb4.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/sb-billboard.png">
-        </div>
-    </div>
-</div>
-
-<div class="project-wrapper">
-    <div class="flex">
-        <div class="project-details">
-            <h3>BANDIER x New Balance</h3>
-            <p>Art Direction — 2022</p>
-            <p>The New Balance x BANDIER collaboration captures the power of women who move through the world with style and ambition. The campaign featured DJ Millie who uses music to move her world, while inspiring the next generation of creatives to move their world their way.</p>
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/nb_select_1.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image video desktop">
-            <div class="vimeo-wrapper">
-                <iframe src="https://player.vimeo.com/video/994613182?autoplay=1&muted=1&background=1&loop=1&byline=0&title=0"
-                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/NB-Campaign.gif">
-        </div>
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/nb_bandier_news.png">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/nb_select_2.jpg">
-        </div>
-    </div>
-    <div class="full">
-        <div class="project-image">
-            <img class="lazy image" data-src="assets/beta/nb_select_4.jpg">
-        </div>
-    </div>
-</div>
-
-
-<footer>
-    <div class="flex">
-      <h2>I hope you enjoyed, see you soon. You can reach me <a href="mailto:hello@estefi-panizza.com">here</a>.</h2>
-      <small>© All work rights reserved to their respective owners ∆ Website by Ben Longden</small>
-    </div>
-  </footer>
-  <script src="js/main.js"></script>
-  </body>
-  </html>
-
-<style>
-    body {
-        padding: 0;
-        margin: 0;
-        font-family: 'Maison Neue';
-    }
-    .flex {
-        display: flex;
-        align-items: flex-start;
-        padding-top: 5vh;
-        padding-bottom: 5vh;
-        margin-left: 0 !important;
-    }
-    .flex > div {
-        width: 50%;
-    }
-    .flex > div img{
-        width: auto;
-        height: 90vh;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .flex > div img{
-            width: 100%;
-            height: auto;
-        }
-        .flex > div {
-            width: 100%;
-        }
-        .project-details {
-            padding: 50px !important;
-            position: relative !important;
-            top: 0 !important;
-        }
-        .flex { 
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-    }
-
-    .project-details {
-        position: sticky;
-        padding: 100px;
-        box-sizing: border-box;
-        top: 100px;
-    }
-
-    .project-image{
-        position: relative;
-    }
-
-    .project-image.video {
-        padding-top: 0;
-    }
-
-    .project-image.video.desktop {
-        display: block;
-    }
-
-    .project-image.video.mobile {
-        display: none;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .project-image.video.desktop {
-            display: none;
-        }
-        .project-image.video.mobile {
-            display: block;
-        }
-        .project-image.video {
-            height: 79vh;  
-        }
-    }
-
-    .project-details h3, .project-details p {
-        max-width: 400px;
-    }
-
-    .full > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        padding-top: 5vh;
-    }
-
-    @media only screen and (max-width: 600px) {
-        .full > div {
-            padding-top: 0;
-            height: 30vh;
+                    scrollList.appendChild(item);
+                    scrollList.appendChild(details);
+                });
+            }
         }
 
-        .full + .full > div {
-        padding-top: 20px !important;
-        }
-        .full + .full + .full > div {
-            padding-top: 20px !important;
-        }
-        .full + .full + .full + .full > div {
-            padding-top: 20px !important;
-        }
-    }
+        // --- 2. Smooth Infinite Scroll Animation ---
+        let currentScroll = 0;
+        let speed = 0.8; // Adjust auto-scroll speed here
 
-    .full > div img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        function animateScroll() {
+            currentScroll -= speed;
+            
+            // Calculate one-third of the total height (since we multiplied the array by 3)
+            const singleSetHeight = scrollList.getBoundingClientRect().height / 3;
 
-    .full + .full > div {
-        padding-top: 0;
-    }
-    .full + .full + .full > div {
-        padding-top: 0;
-    }
-    .full + .full + .full + .full > div {
-        padding-top: 0;
-    }
-    .vimeo-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-        overflow: hidden;
-    }
-    .vimeo-wrapper iframe {
-        width: 100vw;
-        height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
-        min-height: 100vh;
-        min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .header {
-        background-color: #fff;
-        position: relative;
-        width: 100%;
-        height: 62px;
-    }
-    .name {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: absolute;
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-    .contact {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 20px;
-    }
-    .about {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 20px;
-    }
+            // Reset position to create seamless loop
+            if (Math.abs(currentScroll) >= singleSetHeight) {
+                currentScroll = 0;
+            }
 
-    @media only screen and (max-width: 600px) {
-        .header {
-            height: 56px;
+            scrollList.style.transform = `translateY(${currentScroll}px)`;
+            requestAnimationFrame(animateScroll);
         }
-        .name {
-            font-size: 15px;
-            letter-spacing: 1px;
-        }
-        .contact {
-            font-size: 15px;
-        }
-        .about {
-            font-size: 15px;
-        }
-    }
 
-</style>
+        // --- 3. Cursor Follow Effect ---
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Move the container using requestAnimationFrame for smoothness could be done, 
+            // but direct application here works well for standard usage.
+            hoverContainer.style.left = `${mouseX}px`;
+            hoverContainer.style.top = `${mouseY}px`;
+        });
+
+        function activateImage(imgId) {
+            hoverContainer.classList.add('active');
+            images.forEach(img => img.classList.remove('active'));
+            document.getElementById(imgId).classList.add('active');
+            
+            // Pause scrolling when hovering (optional, comment out if you want continuous scroll)
+            speed = 0.2; 
+        }
+
+        function deactivateImage() {
+            hoverContainer.classList.remove('active');
+            // Resume normal scroll speed
+            speed = 0.8; 
+        }
+
+        // --- Initialize ---
+        createListElements();
+        animateScroll();
+
+    </script>
+</body>
+</html>
