@@ -141,13 +141,13 @@
         <img src="new-images/bumble-1.jpg" id="img-2" alt="Fashion 2">
         <img src="new-images/spanx-1.jpg" id="img-3" alt="Fashion 3">
         <img src="new-images/fs-1.jpg" id="img-4" alt="Fashion 4">
-        <img src="new-images/spanx-2.jpg" id="img-5" alt="Fashion 4">
-        <img src="new-images/dts-1.jpg" id="img-6" alt="Fashion 4">
+        <img src="new-images/spanx-2.jpg" id="img-5" alt="Fashion 5">
+        <img src="new-images/dts-1.jpg" id="img-6" alt="Fashion 6">
     </div>
 
     <div class="scroll-container">
         <div class="scroll-list" id="scroll-list">
-            </div>
+        </div>
     </div>
 
     <script>
@@ -170,18 +170,15 @@
             // We loop the array 3 times to ensure there's enough content to scroll infinitely
             for (let i = 0; i < 3; i++) {
                 projects.forEach(project => {
-                    // Create title
                     const item = document.createElement('div');
                     item.classList.add('project-item');
                     item.textContent = project.title;
                     item.dataset.img = project.imgId;
 
-                    // Create sub-details
                     const details = document.createElement('div');
                     details.classList.add('project-details');
                     details.innerHTML = `<span>${project.location}</span><span>${project.year}</span>`;
 
-                    // Hover Events
                     item.addEventListener('mouseenter', () => activateImage(project.imgId));
                     item.addEventListener('mouseleave', deactivateImage);
 
@@ -191,19 +188,41 @@
             }
         }
 
-        // --- 2. Smooth Infinite Scroll Animation ---
+        // --- 2. Smooth Infinite & Manual Scroll Animation ---
         let currentScroll = 0;
-        let speed = 0.8; // Adjust auto-scroll speed here
+        let speed = 0.8; // Auto-scroll speed
+
+        // Desktop Wheel Scroll
+        window.addEventListener('wheel', (e) => {
+            currentScroll -= e.deltaY * 0.8; // The 0.8 acts as a dampener for smoother trackpad feel
+        });
+
+        // Mobile Touch Scroll
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+        window.addEventListener('touchmove', (e) => {
+            const touchY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchY;
+            currentScroll -= deltaY * 1.5; // Multiplier adjusts touch sensitivity
+            touchStartY = touchY;
+        });
 
         function animateScroll() {
+            // Constant auto-scroll
             currentScroll -= speed;
             
-            // Calculate one-third of the total height (since we multiplied the array by 3)
+            // Calculate one-third of the total height (one full set of projects)
             const singleSetHeight = scrollList.getBoundingClientRect().height / 3;
 
-            // Reset position to create seamless loop
-            if (Math.abs(currentScroll) >= singleSetHeight) {
-                currentScroll = 0;
+            // Reset position to create a seamless loop in BOTH directions
+            if (currentScroll <= -singleSetHeight) {
+                // If scrolling down naturally
+                currentScroll += singleSetHeight;
+            } else if (currentScroll > 0) {
+                // If the user scrolls backwards (upwards) past 0
+                currentScroll -= singleSetHeight;
             }
 
             scrollList.style.transform = `translateY(${currentScroll}px)`;
@@ -217,9 +236,6 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
-            // Move the container using requestAnimationFrame for smoothness could be done, 
-            // but direct application here works well for standard usage.
             hoverContainer.style.left = `${mouseX}px`;
             hoverContainer.style.top = `${mouseY}px`;
         });
@@ -229,13 +245,13 @@
             images.forEach(img => img.classList.remove('active'));
             document.getElementById(imgId).classList.add('active');
             
-            // Pause scrolling when hovering (optional, comment out if you want continuous scroll)
+            // Slow down the auto-scroll when hovering
             speed = 0.2; 
         }
 
         function deactivateImage() {
             hoverContainer.classList.remove('active');
-            // Resume normal scroll speed
+            // Resume normal auto-scroll speed
             speed = 0.8; 
         }
 
