@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumble Campaign — Estefi Panizza</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation (Matches Index & About) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            z-index: 100;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            mix-blend-mode: difference;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.5;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-up {
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* --- Project Hero --- */
+        .project-hero {
+            padding: 150px 2rem 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 8vw;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: rgba(130, 130, 130, 0.917);
+            font-weight: 300;
+        }
+
+        /* --- Project Meta Grid --- */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 0 2rem 4rem 2rem;
+        }
+
+        .meta-col {
+            grid-column: span 3;
+        }
+
+        .meta-col h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .meta-col p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Project Content Layouts --- */
+        .content-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* Space between rows of images */
+            padding: 0 2rem;
+        }
+
+        .img-full {
+            width: 100%;
+            height: auto;
+            max-height: 90vh; /* Keeps the image beautifully framed on large screens */
+            object-fit: cover;
+        }
+
+        .img-grid-half {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .img-grid-half img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 3/4; /* Forces editorial portrait crops */
+        }
+
+        /* --- Description Block --- */
+        .text-block {
+            grid-column: span 12;
+            padding: 6rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .text-block p {
+            font-size: 2.5vw;
+            line-height: 1.3;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 60%;
+            text-align: center;
+        }
+
+        /* --- Next Project Footer --- */
+        .next-project {
+            padding: 8rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            color: rgba(130, 130, 130, 0.917);
+            transition: color 0.4s ease;
+            cursor: pointer;
+        }
+
+        .next-project:hover {
+            color: #fff;
+        }
+
+        .next-project h5 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .next-project h2 {
+            font-size: 6vw;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .meta-col {
+                grid-column: span 6;
+                margin-bottom: 1.5rem;
+            }
+            .text-block p {
+                font-size: 4vw;
+                max-width: 85%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-title { font-size: 12vw; }
+            .img-grid-half {
+                grid-template-columns: 1fr; /* Stack side-by-side images on mobile */
+            }
+            .meta-col { grid-column: span 12; }
+            .text-block p { font-size: 1.5rem; max-width: 100%; }
+            .next-project h2 { font-size: 10vw; }
+            .project-hero, .meta-grid, .content-container { padding-left: 1rem; padding-right: 1rem; margin-left: 0; margin-right: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">Estefi Panizza — Art Direction</a>
+        </div>
+        <div class="nav-links">
+            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="about.html">About</a></div>
+        </div>
+    </nav>
+
+    <!-- Hero Titles -->
+    <header class="project-hero">
+        <h1 class="project-title animate-up">Bumble</h1>
+        <h2 class="project-subtitle animate-up delay-1">Global Brand Campaign</h2>
+    </header>
+
+    <!-- Meta Data Grid -->
+    <div class="meta-grid animate-up delay-2">
+        <div class="meta-col">
+            <h4>Client</h4>
+            <p>Bumble Inc.</p>
+        </div>
+        <div class="meta-col">
+            <h4>Role</h4>
+            <p>Art Direction & Set Design</p>
+        </div>
+        <div class="meta-col">
+            <h4>Location</h4>
+            <p>Los Angeles, CA</p>
+        </div>
+        <div class="meta-col">
+            <h4>Year</h4>
+            <p>2023</p>
+        </div>
+    </div>
+
+    <!-- Main Content Flow -->
+    <div class="content-container animate-up delay-3">
+        
+        <!-- Hero Massive Image -->
+        <!-- Replace src with: new-images/bumble-hero.jpg -->
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1600&q=80" alt="Bumble Campaign Hero" class="img-full">
+
+        <!-- Statement/Description Text -->
+        <div class="text-block">
+            <p>A fresh visual language capturing the spontaneous, raw, and authentic moments of modern connection. Shot on 35mm film across three days in Los Angeles.</p>
+        </div>
+
+        <!-- 2-Column Editorial Grid -->
+        <div class="img-grid-half">
+            <!-- Replace src with: new-images/bumble-2.jpg -->
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80" alt="Bumble Campaign Detail 1">
+            <!-- Replace src with: new-images/bumble-3.jpg -->
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Bumble Campaign Detail 2">
+        </div>
+
+        <!-- Another Full Width Image (Maybe a wide landscape or group shot) -->
+        <!-- Replace src with: new-images/bumble-4.jpg -->
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1600&q=80" alt="Bumble Campaign Group" class="img-full" style="margin-top: 1rem;">
+
+    </div>
+
+    <!-- Next Project Footer Button -->
+    <a href="project-spanx.html" class="next-project">
+        <h5>Next Project</h5>
+        <h2>Spanx</h2>
+    </a>
+
+    <!-- Simple Scroll Fade-in Logic for Images -->
+    <script>
+        // This tiny script makes images fade in smoothly as you scroll down the page, 
+        // adding to the premium feel of the portfolio.
+        const images = document.querySelectorAll('.content-container img');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        images.forEach(img => {
+            // Set initial state for images
+            img.style.opacity = 0;
+            img.style.transform = 'translateY(20px)';
+            img.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            imageObserver.observe(img);
+        });
+    </script>
+</body>
+</html>
