@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Estefi Panizza</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Navigation (Matches Index) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            z-index: 100;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            mix-blend-mode: difference;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.5;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* --- About Page Layout --- */
+        .about-container {
+            min-height: 100vh;
+            padding: 150px 2rem 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- Big Bio Typography --- */
+        .bio-section {
+            font-size: 4.5vw;
+            font-weight: 400;
+            line-height: 1.1;
+            max-width: 90%;
+            margin-bottom: 100px;
+            color: rgba(255, 255, 255, 0.9);
+            
+            /* Entry Animation */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .bio-section span {
+            color: rgba(130, 130, 130, 0.917); /* Matches the gray from your index */
+        }
+
+        /* --- Info Grid (Clients, Contact, etc.) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 3rem;
+            
+            /* Entry Animation */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        .info-col {
+            grid-column: span 4;
+        }
+
+        .info-col.portrait-col {
+            grid-column: span 4;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .info-col h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+        }
+
+        .info-col ul {
+            list-style: none;
+        }
+
+        .info-col li {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .info-col a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Elegant Underline Hover for Links */
+        .info-col a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        .info-col a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* --- Portrait Image --- */
+        .portrait-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        .portrait-img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- Keyframes --- */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .bio-section {
+                font-size: 6vw;
+                max-width: 100%;
+            }
+            .info-col {
+                grid-column: span 6;
+            }
+            .info-col.portrait-col {
+                grid-column: span 12;
+                justify-content: flex-start;
+                order: -1; /* Move image to top on mobile */
+                margin-bottom: 2rem;
+            }
+            .portrait-img {
+                max-width: 100%;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bio-section {
+                font-size: 8vw;
+                margin-top: 2rem;
+            }
+            .info-col {
+                grid-column: span 12;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">Estefi Panizza — Art Direction</a>
+        </div>
+        <div class="nav-links">
+            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="about.html">About</a></div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="about-container">
+        
+        <!-- Bio Statement -->
+        <div class="bio-section">
+            I’m a Senior Art Director with 10+ years of
+            experience across fashion, beauty, and high-
+            end lifestyle brands. With a foundation in
+            graphic design and marketing psychology,
+            my work is rooted in thoughtful story telling —
+            creating images and ideas that feel
+            intentional, modern, and quietly luxurious.
+            <br /><br />
+            <span>I lead with concept, craft, and intuition. My
+            approach is collaborative and deeply
+            considered, shaped by an enduring love of
+            fashion, culture, and the way design can
+            make people feel. I aim for work that is
+            refined yet expressive, where every detail has
+            purpose and every touchpoint reflects a
+            sense of ease and sophistication.</span>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="info-grid">
+            
+            <!-- Column 1: Contact & Socials -->
+            <div class="info-col">
+                <h3>Contact / Social</h3>
+                <ul>
+                    <li><a href="mailto:hello@estefipanizza.com">hello@estefipanizza.com</a></li>
+                    <li><a href="#" target="_blank">Instagram</a></li>
+                    <li><a href="#" target="_blank">LinkedIn</a></li>
+                    <li><a href="#" target="_blank">Working Not Working</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Selected Clients -->
+            <div class="info-col">
+                <h3>Selected Clients</h3>
+                <ul>
+                    <li>Sana Jardin</li>
+                    <li>Bumble</li>
+                    <li>Spanx</li>
+                    <li>Four Seasons</li>
+                    <li>Death To Stock</li>
+                    <li>Vogue Latin America</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Portrait -->
+            <div class="info-col portrait-col">
+                <!-- Replace with actual portrait URL -->
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80" alt="Estefi Panizza" class="portrait-img">
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
