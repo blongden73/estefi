@@ -368,6 +368,14 @@
                     };
                 });
 
+                // ==========================================
+                // NEW: Randomize the order of the projects
+                // ==========================================
+                for (let i = originalProjects.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [originalProjects[i], originalProjects[j]] = [originalProjects[j], originalProjects[i]];
+                }
+
                 N = originalProjects.length;
                 infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
                 activeIndex = N;

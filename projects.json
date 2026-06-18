@@ -2,7 +2,7 @@
     "sana-jardin": {
       "title": "Sana Jardin",
       "location": "London",
-      "year": "2026",
+      "year": "2025",
       "category": "View Categories / Editorial",
       "media": [
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-1.jpg", "padded": false },
@@ -18,7 +18,7 @@
     "bumble": {
       "title": "Bumble",
       "location": "Los Angeles",
-      "year": "2026",
+      "year": "2025",
       "category": "Commercial",
       "media": [
         { "type": "image", "src": "/new-images/bumble/bumble-1.jpg", "padded": false },
@@ -47,7 +47,7 @@
     "spanx-nyc": {
       "title": "Spanx Activewear",
       "location": "New York",
-      "year": "2026",
+      "year": "2025",
       "category": "Commercial",
       "media": [
         { "type": "image", "src": "/new-images/spanx/spanx-active-1.jpg", "padded": false },
@@ -62,7 +62,7 @@
     "dts-cosy-care": {
       "title": "DTS Cosy Care",
       "location": "Buenos Aires",
-      "year": "2026",
+      "year": "2025",
       "category": "Commercial",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-cosy-care-1.jpg", "padded": false },
@@ -77,7 +77,7 @@
     "spanx-pr": {
       "title": "Spanx Red Shop",
       "location": "New York",
-      "year": "2026",
+      "year": "2025",
       "category": "Commercial",
       "media": [
         { "type": "image", "src": "/new-images/spanx/spanx-red-1.jpg", "padded": false },
@@ -92,7 +92,7 @@
     "dts-suite-talk": {
       "title": "DTS Suite Talk",
       "location": "Buenos Aires",
-      "year": "2026",
+      "year": "2024",
       "category": "Commercial",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-honeymoon-1.jpg", "padded": false },
@@ -107,7 +107,7 @@
     "dts-football": {
       "title": "DTS Football",
       "location": "Buenos Aires",
-      "year": "2026",
+      "year": "2023",
       "category": "Editorial",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-football-1.jpg", "padded": false },
@@ -120,7 +120,7 @@
     "dts-reform": {
       "title": "DTS Reform",
       "location": "Buenos Aires",
-      "year": "2026",
+      "year": "2025",
       "category": "Editorial",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-circular-1.jpg", "padded": false },
