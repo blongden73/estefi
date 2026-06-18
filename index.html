@@ -5,73 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estefi Panizza Art Direction</title>
     <style>
-                            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalMonoWebfont.woff2') format('woff2'),
-                    url('NBInternationalMonoWebfont.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap;
-            }
+        @font-face {
+        font-family: 'Basis Grotesque Pro';
+        src: url('assets/BasisGrotesquePro-Regular.woff2') format('woff2'),
+            url('assets/BasisGrotesquePro-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalRegularWebfont.woff2') format('woff2'),
-                    url('NBInternationalRegularWebfont.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap;
-            }
+    @font-face {
+        font-family: 'Basis Grotesque Pro';
+        src: url('assets/BasisGrotesquePro-Italic.woff2') format('woff2'),
+            url('assets/BasisGrotesquePro-Italic.woff') format('woff');
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+    }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalLightItalicWebfont.woff2') format('woff2'),
-                    url('NBInternationalLightItalicWebfont.woff') format('woff');
-                font-weight: 300;
-                font-style: italic;
-                font-display: swap;
-            }
+    @font-face {
+        font-family: 'Basis Grotesque Pro';
+        src: url('assets/BasisGrotesquePro-MediumItalic.woff2') format('woff2'),
+            url('assets/BasisGrotesquePro-MediumItalic.woff') format('woff');
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+    }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalItalicWebfont.woff2') format('woff2'),
-                    url('NBInternationalItalicWebfont.woff') format('woff');
-                font-weight: normal;
-                font-style: italic;
-                font-display: swap;
-            }
+    @font-face {
+        font-family: 'Basis Grotesque Pro';
+        src: url('Bassets/asisGrotesquePro-Medium.woff2') format('woff2'),
+            url('assets/BasisGrotesquePro-Medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalMonoWebfont.woff2') format('woff2'),
+                 url('NBInternationalMonoWebfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalBoldWebfont.woff2') format('woff2'),
-                    url('NBInternationalBoldWebfont.woff') format('woff');
-                font-weight: bold;
-                font-style: normal;
-                font-display: swap;
-            }
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalRegularWebfont.woff2') format('woff2'),
+                 url('NBInternationalRegularWebfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalLightWebfont.woff2') format('woff2'),
-                    url('NBInternationalLightWebfont.woff') format('woff');
-                font-weight: 300;
-                font-style: normal;
-                font-display: swap;
-            }
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalLightItalicWebfont.woff2') format('woff2'),
+                 url('NBInternationalLightItalicWebfont.woff') format('woff');
+            font-weight: 300;
+            font-style: italic;
+            font-display: swap;
+        }
 
-            @font-face {
-                font-family: 'NB International';
-                src: url('NBInternationalBoldItalicWebfont.woff2') format('woff2'),
-                    url('NBInternationalBoldItalicWebfont.woff') format('woff');
-                font-weight: bold;
-                font-style: italic;
-                font-display: swap;
-            }
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalItalicWebfont.woff2') format('woff2'),
+                 url('NBInternationalItalicWebfont.woff') format('woff');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalBoldWebfont.woff2') format('woff2'),
+                 url('NBInternationalBoldWebfont.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalLightWebfont.woff2') format('woff2'),
+                 url('NBInternationalLightWebfont.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalBoldItalicWebfont.woff2') format('woff2'),
+                 url('NBInternationalBoldItalicWebfont.woff') format('woff');
+            font-weight: bold;
+            font-style: italic;
+            font-display: swap;
+        }
 
         /* --- CSS Variables for the Opposite Wheel Math --- */
         :root {
-            --img-h: 25vw;
-            --img-gap: 20px; /* Updated to 20px exactly */
+            --img-h: 45vw;
+            --img-gap: 20px;
         }
 
         /* --- Reset & Base Styles --- */
@@ -82,11 +117,12 @@
         }
 
         body {
-            font-family:'NB International', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f0f0f0; 
+            font-family: 'Basis Grotesque Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #faf9f2; 
             color: #111;
             overflow: hidden; 
             -webkit-font-smoothing: antialiased;
+            font-weight: 500;
         }
 
         /* --- Seamless Teleportation Class --- */
@@ -102,13 +138,21 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 2rem;
+            padding: 2rem 2vw 2rem 2vw;
             z-index: 100;
-            font-size: 0.9rem;
+            font-size: 1.3rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0px;
             color: #fff;
             mix-blend-mode: difference; 
+            font-weight: 500;
+        }
+
+        intro {
+            padding: 2rem 5vw;
+            width: 100%;
+            position: absolute;
+            top: 60px;
         }
 
         nav .nav-links {
@@ -119,6 +163,11 @@
         nav a {
             color: inherit;
             text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
         }
 
         /* --- Split Layout Container --- */
@@ -141,7 +190,7 @@
         .text-mask {
             position: absolute;
             top: 35vh; 
-            left: 5vw;
+            left: 2vw;
             right: 0;
             bottom: 0; 
             overflow: hidden; 
@@ -157,10 +206,16 @@
         }
 
         .project-item {
-            display: flex;
-            align-items: center; 
             margin-bottom: 2vh; 
             cursor: pointer;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: baseline; 
+            text-decoration: none;
+            color: inherit;
+            outline: none;
         }
 
         .project-title {
@@ -178,22 +233,33 @@
         }
 
         .project-details {
-            margin-left: 2rem; 
+            margin-left: 1.25rem; 
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
             color: rgba(0, 0, 0, 0.6);
             opacity: 0;
-            transform: translateX(-15px);
+            transform: translateX(-15px) translateY(-13px);
             transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: none;
         }
 
         .project-item.active .project-details {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) translateY(-13px);
             transition-delay: 0.2s; 
+        }
+
+        .text-overlay-panel {
+            background-color: #faf9f2d4;
+            position: absolute;
+            top: 4vw;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            pointer-events: none;
         }
 
         /* =========================================
@@ -207,7 +273,7 @@
 
         .image-track {
             position: absolute;
-            top: 35vh; 
+            top: calc(50vh - (var(--img-h) / 2)); 
             left: 0;
             right: 5vw;
             transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -220,9 +286,17 @@
             height: var(--img-h); 
             transform-origin: center;
             transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
-            
             opacity: 0.15; 
             transform: scale(1);
+            filter: blur(5px);
+        }
+
+        .image-wrapper a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            cursor: pointer;
         }
 
         .image-wrapper img {
@@ -234,17 +308,7 @@
         .image-wrapper.active {
             opacity: 1;
             transform: scale(1);
-        }
-
-        .text-overlay-panel {
-            background-color: rgb(240 240 240 / 90%);
-            position: absolute;
-            top: 4vw;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 10;
-            pointer-events: none;
+            filter: blur(0);
         }
 
     </style>
@@ -253,12 +317,14 @@
 
     <nav>
         <div class="logo">
-            <a href="index.html">Estefi Panizza — Art Direction</a>
+            <a href="index.html">Estefi Panizza</a>
         </div>
-        <!-- <div class="nav-links">
-            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+        <div class="nav-links">
+            <div><a href="/">Work</a></div>
             <div><a href="about.html">About</a></div>
-        </div> -->
+            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="https://instagram.com/estefi_panizza/">Instagram</a></div>
+        </div>
     </nav>
 
     <div class="split-layout">
@@ -274,48 +340,88 @@
     </div>
 
     <script>
-        const originalProjects = [
-            { title: "Sana Jardin", details: "London ", date: "2026", imgSrc: "/new-images/sj-1.jpg" },
-            { title: "Bumble", details: "Los Angeles ", date: "2026", imgSrc: "/new-images/bumble-1.jpg" },
-            { title: "Spanx NYC", details: "New York ", date: "2026", imgSrc: "/new-images/spanx-1.jpg" },
-            { title: "Four Seasons", details: "Miami ", date: "2026", imgSrc: "/new-images/fs-1.jpg" },
-            { title: "Spanx PR", details: "Puerto Rico ", date: "2026", imgSrc: "/new-images/spanx-2.jpg" },
-            { title: "Death To Stock", details: "Buenos Aires ", date: "2026", imgSrc: "/new-images/dts-1.jpg" }
-        ];
-
-        const N = originalProjects.length;
-        const infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
-
         const textTrack = document.getElementById('text-track');
         const imageTrack = document.getElementById('image-track');
         
-        let activeIndex = N; 
+        let originalProjects = [];
+        let N = 0;
+        let infiniteProjects = [];
+        let activeIndex = 0; 
         let snapTimeout;
 
+        // 1. Fetch Projects from JSON
+        async function fetchAndLoadProjects() {
+            try {
+                const response = await fetch('./projects.json');
+                const projectsData = await response.json();
+
+                // Convert JSON object into an array we can map over
+                originalProjects = Object.keys(projectsData).map(key => {
+                    const project = projectsData[key];
+                    return {
+                        id: key, // This acts as the slug for the URL
+                        title: project.title,
+                        details: project.location, // Assuming 'location' based on project.html code
+                        date: project.year,       // Assuming 'year' based on project.html code
+                        // Grab the first piece of media to use as the index thumbnail
+                        imgSrc: project.media && project.media.length > 0 ? project.media[0].src : '' 
+                    };
+                });
+
+                N = originalProjects.length;
+                infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
+                activeIndex = N;
+
+                // Build the DOM
+                init();
+
+            } catch (error) {
+                console.error("Error loading projects.json:", error);
+                textTrack.innerHTML = `<div class="project-title" style="padding: 2vw;">Failed to load projects.</div>`;
+            }
+        }
+
+        // 2. Build the initial DOM based on the fetched array
         function init() {
             infiniteProjects.forEach((project, index) => {
+                // Generates link dynamically based on the JSON object key
+                const projectUrl = `project.html?id=${project.id}`;
+
                 // Text Setup
                 const textItem = document.createElement('div');
                 textItem.classList.add('project-item');
                 textItem.innerHTML = `
-                    <div class="project-title">${project.title}</div>
-                    <div class="project-details">${project.details}<br/>${project.date}</div>
+                    <a href="${projectUrl}" class="project-link" onclick="handleProjectClick(event, ${index})">
+                        <div class="project-title">${project.title}</div>
+                        <div class="project-details">${project.details}<br/>${project.date}</div>
+                    </a>
                 `;
-                textItem.addEventListener('click', () => updateActiveProject(index));
                 textTrack.appendChild(textItem);
 
                 // Image Setup
                 const imgItem = document.createElement('div');
                 imgItem.classList.add('image-wrapper');
-                
-                // Using the CSS variable gap directly in JS
                 imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
-                imgItem.innerHTML = `<img src="${project.imgSrc}" alt="${project.title}">`;
+                imgItem.innerHTML = `
+                    <a href="${projectUrl}" onclick="handleProjectClick(event, ${index})">
+                        <img src="${project.imgSrc}" alt="${project.title}">
+                    </a>
+                `;
                 imageTrack.appendChild(imgItem);
             });
 
             setTimeout(() => updateActiveProject(N), 100);
         }
+
+        // Handles clicks on both images and text
+        window.handleProjectClick = function(event, index) {
+            // If the user clicks an item that is NOT the active one, scroll to it instead of linking
+            if (index !== activeIndex) {
+                event.preventDefault(); 
+                updateActiveProject(index); 
+            }
+            // If it IS active, we do nothing to the event, allowing the browser to navigate to project.html
+        };
 
         function updateActiveProject(newIndex) {
             activeIndex = newIndex;
@@ -325,7 +431,6 @@
             const textOffset = textItems[activeIndex].offsetTop;
             textTrack.style.transform = `translateY(-${textOffset}px)`;
             
-            // Reusing the exact exact CSS variables to keep math completely unified
             imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
 
             textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
@@ -365,9 +470,64 @@
             }, 1000); 
         }
 
+        /* =========================================
+           SCROLL & SWIPE LISTENER LOGIC
+           ========================================= */
+        let isThrottled = false;
+        let scrollAccumulator = 0;
+        
+        window.addEventListener('wheel', (e) => {
+            if (isThrottled) return;
+
+            scrollAccumulator += e.deltaY;
+
+            if (Math.abs(scrollAccumulator) > 50) {
+                if (scrollAccumulator > 0) {
+                    updateActiveProject(activeIndex + 1); 
+                } else {
+                    updateActiveProject(activeIndex - 1); 
+                }
+                
+                scrollAccumulator = 0;
+                isThrottled = true;
+                
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 800); 
+            }
+        });
+
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (isThrottled) return;
+            
+            const touchEndY = e.touches[0].clientY;
+            const delta = touchStartY - touchEndY; 
+            
+            if (Math.abs(delta) > 50) {
+                if (delta > 0) {
+                    updateActiveProject(activeIndex + 1);
+                } else {
+                    updateActiveProject(activeIndex - 1);
+                }
+                
+                touchStartY = touchEndY; 
+                isThrottled = true;
+                
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 800);
+            }
+        });
+
         window.addEventListener('resize', () => updateActiveProject(activeIndex));
 
-        init();
+        // Kick off the data fetch on page load
+        fetchAndLoadProjects();
     </script>
 </body>
 </html>
