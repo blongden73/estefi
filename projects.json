@@ -21,7 +21,13 @@
       "year": "2026",
       "category": "Commercial",
       "media": [
-        { "type": "image", "src": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&q=80", "padded": false }
+        { "type": "image", "src": "/new-images/bumble/bumble-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-7.jpg", "padded": false }
       ]
     }, 
     "dts-hi-tech": {
