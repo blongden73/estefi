@@ -198,6 +198,75 @@
             height: 80%; 
         }
 
+        /* =========================================
+           MOBILE SPECIFIC STYLES
+           ========================================= */
+        .mobile-project-view {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; 
+                overflow-x: hidden;
+            }
+
+            nav {
+                font-size: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 5vw;
+            }
+
+            nav .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .viewport {
+                display: none; /* Hide Desktop Horizontal Scroll */
+            }
+
+            .mobile-project-view {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 120px 0vw 5vw 0vw; /* Pushed down to clear nav */
+            }
+
+            .mobile-image-slide {
+                width: 100%;
+                margin-bottom: 3vw;
+            }
+
+            .mobile-image-slide img,
+            .mobile-image-slide video {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .mobile-project-info {
+                padding: 3rem 5vw 4rem 5vw; /* Padding for the text block at the bottom */
+            }
+
+            .mobile-project-title {
+                font-size: 8vw;
+                font-weight: 400;
+                line-height: 1.05;
+                letter-spacing: -1px;
+                margin-bottom: 0.5rem;
+            }
+
+            .mobile-project-meta {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                line-height: 1.4;
+                color: rgba(0, 0, 0, 0.6);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -219,8 +288,11 @@
         <div class="scroll-container" id="scroll-container"></div>
     </div>
 
+    <div class="mobile-project-view" id="mobile-project-view"></div>
+
     <script>
         const scrollContainer = document.getElementById('scroll-container');
+        const mobileProjectView = document.getElementById('mobile-project-view'); // Grab mobile container
         let targetScroll = 0;
         let currentScroll = 0;
         let maxScroll = 0;
@@ -257,6 +329,7 @@
         function buildPage(projectData) {
             document.title = `${projectData.title} — Estefi Panizza`;
 
+            // --- BUILD DESKTOP DOM ---
             const titleSlide = document.createElement('div');
             titleSlide.className = 'title-slide';
             titleSlide.innerHTML = `
@@ -275,16 +348,39 @@
                 } else {
                     slide.innerHTML = `<img src="${item.src}" alt="${projectData.title} Image">`;
                 }
-
                 scrollContainer.appendChild(slide);
             });
 
+            // --- BUILD MOBILE DOM ---
+            // Images first
+            projectData.media.forEach(item => {
+                const mobileSlide = document.createElement('div');
+                mobileSlide.className = 'mobile-image-slide';
+                if (item.type === 'video') {
+                    mobileSlide.innerHTML = `<video src="${item.src}" autoplay muted loop playsinline></video>`;
+                } else {
+                    mobileSlide.innerHTML = `<img src="${item.src}" alt="${projectData.title} Image" loading="lazy">`;
+                }
+                mobileProjectView.appendChild(mobileSlide);
+            });
+
+            // Title and details at the bottom
+            const infoSlide = document.createElement('div');
+            infoSlide.className = 'mobile-project-info';
+            infoSlide.innerHTML = `
+                <div class="mobile-project-title">${projectData.title}</div>
+                <div class="mobile-project-meta">${projectData.location} — ${projectData.year}<br>${projectData.category}</div>
+            `;
+            mobileProjectView.appendChild(infoSlide);
+
+            // Initialize logic
             initScrollEngine();
             initInteractiveCursor();
         }
 
         function handleError(message) {
             scrollContainer.innerHTML = `<div class="title-slide"><h1 class="project-title">${message}</h1><a href="index.html" style="color:inherit; text-decoration:underline;">Return to Work</a></div>`;
+            mobileProjectView.innerHTML = `<div class="mobile-project-info"><h1 class="mobile-project-title">${message}</h1><a href="index.html" style="color:inherit; text-decoration:underline;">Return to Work</a></div>`;
         }
 
         /* =======================================================
@@ -293,8 +389,9 @@
         function initInteractiveCursor() {
             const viewport = document.querySelector('.viewport');
             
-            // 1. Change the cursor depending on screen half
             viewport.addEventListener('mousemove', (e) => {
+                if (window.innerWidth <= 768) return; // Disable on mobile
+
                 if (e.clientX < window.innerWidth / 2) {
                     viewport.classList.add('cursor-left');
                     viewport.classList.remove('cursor-right');
@@ -304,21 +401,18 @@
                 }
             });
 
-            // 2. Click to jump scroll
             viewport.addEventListener('click', (e) => {
-                // If the user is clicking a link (like the top nav), ignore the custom click-scroll!
+                if (window.innerWidth <= 768) return; // Disable on mobile
                 if (e.target.closest('a')) return;
 
-                // Adjust this number to change how far a single click jumps
-                const jumpAmount = window.innerWidth * 0.6; // Moves 60% of the screen width
+                const jumpAmount = window.innerWidth * 0.6; 
 
                 if (e.clientX < window.innerWidth / 2) {
-                    targetScroll -= jumpAmount; // Scroll Left
+                    targetScroll -= jumpAmount; 
                 } else {
-                    targetScroll += jumpAmount; // Scroll Right
+                    targetScroll += jumpAmount; 
                 }
                 
-                // Keep the scroll strictly within the limits
                 targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
             });
         }
@@ -332,7 +426,15 @@
                 if (maxScroll < 0) maxScroll = 0;
             }
 
-            window.addEventListener('resize', updateMaxScroll);
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    document.body.style.overflow = 'hidden'; 
+                    updateMaxScroll();
+                } else {
+                    document.body.style.overflow = 'auto'; 
+                }
+            });
+
             window.addEventListener('load', updateMaxScroll);
             
             const mediaElements = document.querySelectorAll('img, video');
@@ -341,10 +443,9 @@
             });
 
             window.addEventListener('wheel', (e) => {
-                // Check if the user is swiping horizontally (deltaX) or vertically (deltaY)
-                // We use the larger of the two values so it responds to either trackpad gesture cleanly
+                if (window.innerWidth <= 768) return; // Native scrolling only on mobile
+
                 const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-                
                 targetScroll += delta * 1.5;
                 targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
             });
@@ -353,11 +454,14 @@
             let startY = 0;
 
             window.addEventListener('touchstart', (e) => {
+                if (window.innerWidth <= 768) return;
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
             });
 
             window.addEventListener('touchmove', (e) => {
+                if (window.innerWidth <= 768) return;
+                
                 const currentX = e.touches[0].clientX;
                 const currentY = e.touches[0].clientY;
                 
@@ -379,28 +483,30 @@
             const dragWeights = [0.3, 0.5, 0.3, 0.5];
 
             function renderLoop() {
-                const oldScroll = currentScroll;
-                currentScroll += (targetScroll - currentScroll) * 0.05;
+                if (window.innerWidth > 768) {
+                    const oldScroll = currentScroll;
+                    currentScroll += (targetScroll - currentScroll) * 0.05;
+                    
+                    const velocity = currentScroll - oldScroll;
+
+                    scrollContainer.style.transform = `translate3d(-${currentScroll}px, 0, 0)`;
+
+                    const slides = document.querySelectorAll('.image-slide');
+                    
+                    slides.forEach((slide, index) => {
+                        const media = slide.querySelector('img, video');
+                        if (!media) return;
+
+                        const weight = dragWeights[index % dragWeights.length];
+                        const dragX = velocity * weight * 2.5;
+
+                        let skewAmount = velocity * 0.03 * weight;
+                        skewAmount = Math.max(-3.5, Math.min(3.5, skewAmount));
+
+                        media.style.transform = `translate3d(${dragX}px, 0, 0) skewX(${skewAmount}deg)`;
+                    });
+                }
                 
-                const velocity = currentScroll - oldScroll;
-
-                scrollContainer.style.transform = `translate3d(-${currentScroll}px, 0, 0)`;
-
-                const slides = document.querySelectorAll('.image-slide');
-                
-                slides.forEach((slide, index) => {
-                    const media = slide.querySelector('img, video');
-                    if (!media) return;
-
-                    const weight = dragWeights[index % dragWeights.length];
-                    const dragX = velocity * weight * 2.5;
-
-                    let skewAmount = velocity * 0.03 * weight;
-                    skewAmount = Math.max(-3.5, Math.min(3.5, skewAmount));
-
-                    media.style.transform = `translate3d(${dragX}px, 0, 0) skewX(${skewAmount}deg)`;
-                });
-
                 requestAnimationFrame(renderLoop);
             }
 
