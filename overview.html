@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive — Estefi Panizza</title>
+    <title>Index — Estefi Panizza</title>
     <style>
         /* --- Typography --- */
         @font-face {
@@ -60,11 +60,11 @@
 
         body {
             font-family: 'Basis Grotesque Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #faf9f2; 
+            background-color: #fff; /* Changed to white to match your screenshot */
             color: #111;
             -webkit-font-smoothing: antialiased;
             font-weight: 500;
-            /* Allowed scrolling for the archive page */
+            /* Allow normal vertical scrolling for the index page */
             overflow-y: auto; 
             overflow-x: hidden;
         }
@@ -82,14 +82,7 @@
             font-size: 1.3rem;
             text-transform: uppercase;
             letter-spacing: 0px;
-            color: #fff;
-            mix-blend-mode: difference; 
-            font-weight: 500;
-            pointer-events: none; /* Let clicks pass through empty space */
-        }
-
-        nav .logo, nav .nav-links {
-            pointer-events: auto; /* Re-enable clicks on the text */
+            color: #111; /* Changed to dark since background is white */
         }
 
         nav .nav-links {
@@ -107,81 +100,64 @@
             opacity: 0.6;
         }
 
-        /* --- Contact Sheet Grid Layout --- */
-        .archive-container {
-            /* Pushes grid below the fixed nav and gives side margins */
-            padding: 120px 2vw 5vw 2vw; 
+        /* --- Index Layout --- */
+        .index-container {
+            padding: 120px 2vw 5vw 2vw; /* Pushes content below the fixed nav */
             width: 100%;
             min-height: 100vh;
         }
 
-        .contact-sheet-grid {
-            display: grid;
-            /* 4 columns on desktop, scaling down based on screen width */
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4vw 2vw; /* Vertical gap, Horizontal gap */
+        .page-title {
+            font-size: 7vw;
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 6rem; /* Huge space below "Index" like in the screenshot */
+            line-height: 1;
         }
 
-        /* Responsive Breakpoints for smaller screens */
-        @media (max-width: 1024px) {
-            .contact-sheet-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .contact-sheet-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 480px) {
-            .contact-sheet-grid { grid-template-columns: 1fr; }
+        /* --- Project Rows --- */
+        .project-row {
+            margin-bottom: 5rem; /* Space between each project row */
         }
 
-        /* --- Individual Grid Items --- */
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .grid-image-wrapper {
-            width: 100%;
-            /* Forces a strict 3:4 portrait crop for that uniform contact sheet look */
-            aspect-ratio: 3 / 4; 
-            overflow: hidden;
-            margin-bottom: 0.75rem;
-            background-color: rgba(0, 0, 0, 0.05); /* Very light grey placeholder before images load */
-        }
-
-        .grid-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-        }
-
-        /* Hover Effect: Slight image scale */
-        .grid-item:hover .grid-image-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .grid-caption {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-family: 'NB International', monospace; /* Uses the secondary font for captions */
-            font-size: 0.75rem;
+        .project-row-title {
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
         }
 
-        .grid-title {
-            font-weight: 500;
+        .project-images-container {
+            display: flex;
+            gap: 1.5vw;
+            /* Allows horizontal scrolling if the images wider than the screen */
+            overflow-x: auto; 
+            /* Hide the ugly default scrollbar but keep the functionality */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            padding-bottom: 1rem; 
         }
 
-        .grid-meta {
-            color: rgba(0, 0, 0, 0.5);
-            text-align: right;
+        .project-images-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .image-link {
+            flex-shrink: 0; /* Prevents flexbox from squishing the images */
+            display: block;
+            height: 35vh; /* Sets a consistent height for all images in the row */
+            background-color: rgba(0,0,0,0.03); /* Tiny placeholder flash */
+            transition: opacity 0.3s ease;
+        }
+
+        .image-link:hover {
+            opacity: 0.8;
+        }
+
+        .image-link img {
+            height: 100%;
+            width: auto; /* Lets the width scale naturally based on the image aspect ratio */
+            object-fit: contain; /* ensures the whole image is seen */
         }
 
     </style>
@@ -194,64 +170,81 @@
         </div>
         <div class="nav-links">
             <div><a href="/">Work</a></div>
-            <div><a href="archive.html">Archive</a></div> <div><a href="about.html">About</a></div>
+            <div><a href="/overview.html">Index</a></div>
+            <div><a href="/about.html">About</a></div>
             <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
             <div><a href="https://instagram.com/estefi_panizza/">Instagram</a></div>
         </div>
     </nav>
 
-    <div class="archive-container">
-        <div class="contact-sheet-grid" id="contact-sheet-grid">
-            </div>
+    <div class="index-container">
+        <h1 class="page-title">Index</h1>
+        
+        <div id="projects-list"></div>
     </div>
 
     <script>
-        const gridContainer = document.getElementById('contact-sheet-grid');
+        const projectsListContainer = document.getElementById('projects-list');
 
-        async function loadArchiveData() {
+        async function loadIndexData() {
             try {
-                // Fetch the exact same JSON file that powers the homepage and project pages
+                // Fetch the JSON file
                 const response = await fetch('./projects.json');
                 const projectsData = await response.json();
 
-                // Convert JSON object into an array so we can map over it
-                const projectsArray = Object.keys(projectsData).map(key => {
-                    return {
-                        id: key,
-                        ...projectsData[key]
-                    };
-                });
-
-                // Generate the HTML for each project in the grid
-                projectsArray.forEach(project => {
-                    // Safety check: Grab the first image if media exists
-                    const firstImage = project.media && project.media.length > 0 ? project.media[0].src : '';
+                // Loop through every project in the JSON
+                Object.keys(projectsData).forEach(key => {
+                    const project = projectsData[key];
                     
-                    const gridItem = document.createElement('a');
-                    gridItem.href = `project.html?id=${project.id}`; // Connects perfectly to your template
-                    gridItem.className = 'grid-item';
+                    // Create the wrapper for the entire row
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'project-row';
 
-                    gridItem.innerHTML = `
-                        <div class="grid-image-wrapper">
-                            <img src="${firstImage}" alt="${project.title}" loading="lazy">
-                        </div>
-                        <div class="grid-caption">
-                            <div class="grid-title">${project.title}</div>
-                            <div class="grid-meta">${project.client} <br/> ${project.year}</div>
-                        </div>
-                    `;
+                    // 1. Create and add the title
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'project-row-title';
+                    // Using your JSON structure: "ANTONI POROWSKI X MAN ABOUT TOWN" etc.
+                    titleDiv.innerText = project.title; 
+                    
+                    if(project.client && project.client !== project.title) {
+                       titleDiv.innerText = `${project.client} / ${project.title}`;
+                    }
 
-                    gridContainer.appendChild(gridItem);
+                    rowDiv.appendChild(titleDiv);
+
+                    // 2. Create the container for the horizontal strip of images
+                    const imagesContainer = document.createElement('div');
+                    imagesContainer.className = 'project-images-container';
+
+                    // 3. Loop through the media array and add every image
+                    if (project.media && project.media.length > 0) {
+                        project.media.forEach(mediaItem => {
+                            // Only add images (skip videos for the index to keep it clean, or include them if you prefer)
+                            if (mediaItem.type === 'image') {
+                                const link = document.createElement('a');
+                                link.href = `project.html?id=${key}`;
+                                link.className = 'image-link';
+                                
+                                // Added loading="lazy" because this page will load a massive amount of images
+                                link.innerHTML = `<img src="${mediaItem.src}" alt="${project.title}" loading="lazy">`;
+                                
+                                imagesContainer.appendChild(link);
+                            }
+                        });
+                    }
+
+                    rowDiv.appendChild(imagesContainer);
+                    projectsListContainer.appendChild(rowDiv);
                 });
 
             } catch (error) {
                 console.error("Error loading projects.json:", error);
-                gridContainer.innerHTML = `<p style="padding: 2vw;">Failed to load archive.</p>`;
+                projectsListContainer.innerHTML = `<p>Failed to load projects.</p>`;
             }
         }
 
-        // Kick off the script
-        loadArchiveData();
+        // Run the function
+        loadIndexData();
     </script>
 </body>
 </html>
