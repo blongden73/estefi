@@ -311,6 +311,80 @@
             filter: blur(0);
         }
 
+        /* =========================================
+           MOBILE SPECIFIC STYLES
+           ========================================= */
+        .mobile-list {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; 
+                overflow-x: hidden;
+            }
+
+            nav {
+                font-size: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 5vw;
+            }
+
+            nav .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .split-layout {
+                display: none;
+            }
+
+            .mobile-list {
+                display: flex;
+                flex-direction: column;
+                gap: 4rem; 
+                padding: 140px 5vw 5vw 5vw; 
+                width: 100%;
+            }
+
+            .mobile-item {
+                display: flex;
+                flex-direction: column;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .mobile-image-wrapper {
+                width: 100%;
+                aspect-ratio: 4 / 5; 
+                background-color: #eee;
+                margin-bottom: 1rem;
+                overflow: hidden;
+            }
+
+            .mobile-image-wrapper img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .mobile-title {
+                font-size: 8vw;
+                font-weight: 500;
+                letter-spacing: -1px;
+                line-height: 1.1;
+                margin-bottom: 0.25rem;
+            }
+
+            .mobile-details {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: rgba(0, 0, 0, 0.6);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -340,9 +414,12 @@
         </div>
     </div>
 
+    <div class="mobile-list" id="mobile-list"></div>
+
     <script>
         const textTrack = document.getElementById('text-track');
         const imageTrack = document.getElementById('image-track');
+        const mobileList = document.getElementById('mobile-list');
         
         let originalProjects = [];
         let N = 0;
@@ -360,20 +437,18 @@
                 originalProjects = Object.keys(projectsData).map(key => {
                     const project = projectsData[key];
                     return {
-                        id: key, // This acts as the slug for the URL
+                        id: key, 
                         title: project.title,
-                        details: project.location, // Assuming 'location' based on project.html code
-                        date: project.year,       // Assuming 'year' based on project.html code
-                        category: project.category,       // Assuming 'year' based on project.html code
-                        client: project.client,       // Assuming 'year' based on project.html code
+                        details: project.location, 
+                        date: project.year,       
+                        category: project.category,       
+                        client: project.client,       
                         // Grab the first piece of media to use as the index thumbnail
                         imgSrc: project.media && project.media.length > 0 ? project.media[0].src : '' 
                     };
                 });
 
-                // ==========================================
-                // NEW: Randomize the order of the projects
-                // ==========================================
+                // Randomize the order of the projects
                 for (let i = originalProjects.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [originalProjects[i], originalProjects[j]] = [originalProjects[j], originalProjects[i]];
@@ -384,18 +459,19 @@
                 activeIndex = N;
 
                 // Build the DOM
-                init();
+                initDesktop();
+                initMobile();
 
             } catch (error) {
                 console.error("Error loading projects.json:", error);
                 textTrack.innerHTML = `<div class="project-title" style="padding: 2vw;">Failed to load projects.</div>`;
+                mobileList.innerHTML = `<div class="mobile-title" style="padding: 5vw;">Failed to load projects.</div>`;
             }
         }
 
-        // 2. Build the initial DOM based on the fetched array
-        function init() {
+        // 2a. Build Desktop DOM
+        function initDesktop() {
             infiniteProjects.forEach((project, index) => {
-                // Generates link dynamically based on the JSON object key
                 const projectUrl = `project.html?id=${project.id}`;
 
                 // Text Setup
@@ -424,17 +500,38 @@
             setTimeout(() => updateActiveProject(N), 100);
         }
 
+        // 2b. Build Mobile DOM
+        function initMobile() {
+            originalProjects.forEach(project => {
+                const projectUrl = `project.html?id=${project.id}`;
+                const mobileItem = document.createElement('a');
+                mobileItem.href = projectUrl;
+                mobileItem.className = 'mobile-item';
+
+                mobileItem.innerHTML = `
+                    <div class="mobile-image-wrapper">
+                        <img src="${project.imgSrc}" alt="${project.title}" loading="lazy">
+                    </div>
+                    <div class="mobile-title">${project.title}</div>
+                    <div class="mobile-details">${project.client} / ${project.category} - ${project.date}</div>
+                `;
+
+                mobileList.appendChild(mobileItem);
+            });
+        }
+
         // Handles clicks on both images and text
         window.handleProjectClick = function(event, index) {
             // If the user clicks an item that is NOT the active one, scroll to it instead of linking
-            if (index !== activeIndex) {
+            if (window.innerWidth > 768 && index !== activeIndex) {
                 event.preventDefault(); 
                 updateActiveProject(index); 
             }
-            // If it IS active, we do nothing to the event, allowing the browser to navigate to project.html
         };
 
         function updateActiveProject(newIndex) {
+            if (window.innerWidth <= 768) return; // Prevent scroll math on mobile
+
             activeIndex = newIndex;
             const textItems = document.querySelectorAll('.project-item');
             const imageItems = document.querySelectorAll('.image-wrapper');
@@ -488,6 +585,7 @@
         let scrollAccumulator = 0;
         
         window.addEventListener('wheel', (e) => {
+            if (window.innerWidth <= 768) return; 
             if (isThrottled) return;
 
             scrollAccumulator += e.deltaY;
@@ -510,10 +608,12 @@
 
         let touchStartY = 0;
         window.addEventListener('touchstart', (e) => {
+            if (window.innerWidth <= 768) return;
             touchStartY = e.touches[0].clientY;
         });
 
         window.addEventListener('touchmove', (e) => {
+            if (window.innerWidth <= 768) return;
             if (isThrottled) return;
             
             const touchEndY = e.touches[0].clientY;
@@ -535,7 +635,14 @@
             }
         });
 
-        window.addEventListener('resize', () => updateActiveProject(activeIndex));
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.body.style.overflow = 'hidden'; 
+                updateActiveProject(activeIndex);
+            } else {
+                document.body.style.overflow = 'auto'; 
+            }
+        });
 
         // Kick off the data fetch on page load
         fetchAndLoadProjects();
