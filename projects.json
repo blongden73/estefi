@@ -154,7 +154,7 @@
       ]
     },
     "spanx-bala": {
-      "client": "DTS",  
+      "client": "Spanx",  
       "title": "Spanx x Bala",
       "location": "New York",
       "year": "2025",
@@ -181,7 +181,9 @@
         { "type": "image", "src": "/new-images/sb/sb-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sb/sb-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sb/sb-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-7.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/sb/sb-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-9.jpg", "padded": false }
       ]
     },
     "speedo-go-full-speedo": {
