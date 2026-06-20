@@ -177,11 +177,13 @@
       "year": "2025",
       "category": "FASHION",
       "media": [
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/sb/sb-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sb/sb-7.jpg", "padded": false }
       ]
     },
     "speedo-go-full-speedo": {
@@ -191,11 +193,14 @@
       "year": "2025",
       "category": "ACTIVEWEAR",
       "media": [
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/speedo/speedo1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/speedo/speedo8.jpg", "padded": false }
       ]
     },
     "spanx-elevated-ecomm": {
@@ -205,11 +210,14 @@
       "year": "2025",
       "category": "FASHION",
       "media": [
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/spanx/ee1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/ee8.jpg", "padded": false }
       ]
     }
     
