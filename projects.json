@@ -1,9 +1,10 @@
 {
     "sana-jardin": {
-      "title": "Sana Jardin",
+      "client": "Sana Jardin",  
+      "title": "Alchemy of Energy",
       "location": "London",
       "year": "2025",
-      "category": "View Categories / Editorial",
+      "category": "CAMPAIGN",
       "media": [
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-2.jpg", "padded": false },
@@ -16,10 +17,11 @@
       ]
     },
     "bumble": {
-      "title": "Bumble",
+      "client": "Bumble",  
+      "title": "Bumble BFF Campaign",
       "location": "Los Angeles",
       "year": "2025",
-      "category": "Commercial",
+      "category": "CAMPAIGN",
       "media": [
         { "type": "image", "src": "/new-images/bumble/bumble-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bumble/bumble-2.jpg", "padded": false },
@@ -31,10 +33,11 @@
       ]
     }, 
     "dts-hi-tech": {
-      "title": "DTS Hi Tech",
+      "client": "DTS",  
+      "title": "Hi Tech",
       "location": "Buenos Aires",
       "year": "2026",
-      "category": "Commercial",
+      "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-hiteck-2.jpg", "padded": false },
@@ -45,10 +48,11 @@
       ]
     },
     "spanx-nyc": {
-      "title": "Spanx Activewear",
+      "client": "Spanx",  
+      "title": "OnForm Yoga collection",
       "location": "New York",
       "year": "2025",
-      "category": "Commercial",
+      "category": "ACTIVEWEAR",
       "media": [
         { "type": "image", "src": "/new-images/spanx/spanx-active-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-2.jpg", "padded": false },
@@ -60,10 +64,11 @@
       ]
     },
     "dts-cosy-care": {
-      "title": "DTS Cosy Care",
+      "client": "DTS",  
+      "title": "Cosy Care",
       "location": "Buenos Aires",
       "year": "2025",
-      "category": "Commercial",
+      "category": "BEAUTY",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-cosy-care-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-cosy-care-2.jpg", "padded": false },
@@ -75,10 +80,11 @@
       ]
     },
     "spanx-pr": {
-      "title": "Spanx Red Shop",
+      "client": "Spanx",  
+      "title": "25 years of Spanx",
       "location": "New York",
       "year": "2025",
-      "category": "Commercial",
+      "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/spanx/spanx-red-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-red-2.jpg", "padded": false },
@@ -90,10 +96,11 @@
       ]
     },
     "dts-suite-talk": {
-      "title": "DTS Suite Talk",
+      "client": "DTS",  
+      "title": "Suite Talk",
       "location": "Buenos Aires",
       "year": "2024",
-      "category": "Commercial",
+      "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-honeymoon-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-honeymoon-2.jpg", "padded": false },
@@ -105,10 +112,11 @@
       ]
     },
     "dts-rebel-prep": {
-      "title": "DTS Rebel Prep",
+      "client": "DTS",  
+      "title": "Rebel Prep",
       "location": "Buenos Aires",
       "year": "2023",
-      "category": "Editorial",
+      "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-football-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-football-2.jpg", "padded": false },
@@ -118,10 +126,11 @@
       ]
     },
     "dts-reform": {
-      "title": "DTS Reform",
+      "client": "DTS",  
+      "title": "Reform",
       "location": "Buenos Aires",
       "year": "2025",
-      "category": "Editorial",
+      "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-circular-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-circular-2.jpg", "padded": false },
@@ -129,6 +138,78 @@
         { "type": "image", "src": "/new-images/dts/dts-circular-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-circular-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/dts/dts-circular-6.jpg", "padded": false }
+      ]
+    },
+    "dts-beyond-the-ring": {
+      "client": "DTS",  
+      "title": "Beyond the ring",
+      "location": "Buenos Aires",
+      "year": "2025",
+      "category": "LIFESTYLE EDITORIAL",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-10.jpg", "padded": false }
+      ]
+    },
+    "spanx-bala": {
+      "client": "DTS",  
+      "title": "Spanx x Bala",
+      "location": "New York",
+      "year": "2025",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false }
+      ]
+    },
+    "sweaty-betty-concept-store": {
+      "client": "Sweaty Betty",  
+      "title": "SB Concept store",
+      "location": "New York",
+      "year": "2025",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
+      ]
+    },
+    "speedo-go-full-speedo": {
+      "client": "Speedo",  
+      "title": "Go full Speedo",
+      "location": "New York",
+      "year": "2025",
+      "category": "ACTIVEWEAR",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
+      ]
+    },
+    "spanx-elevated-ecomm": {
+      "client": "Spanx",  
+      "title": "Elevanted Ecomm",
+      "location": "New York",
+      "year": "2025",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-editorial-9.jpg", "padded": false }
       ]
     }
     

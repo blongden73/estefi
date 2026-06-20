@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive — Estefi Panizza</title>
+    <style>
+        /* --- Typography --- */
+        @font-face {
+            font-family: 'Basis Grotesque Pro';
+            src: url('assets/BasisGrotesquePro-Regular.woff2') format('woff2'),
+                 url('assets/BasisGrotesquePro-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Basis Grotesque Pro';
+            src: url('assets/BasisGrotesquePro-Italic.woff2') format('woff2'),
+                 url('assets/BasisGrotesquePro-Italic.woff') format('woff');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Basis Grotesque Pro';
+            src: url('assets/BasisGrotesquePro-MediumItalic.woff2') format('woff2'),
+                 url('assets/BasisGrotesquePro-MediumItalic.woff') format('woff');
+            font-weight: 500;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Basis Grotesque Pro';
+            src: url('assets/BasisGrotesquePro-Medium.woff2') format('woff2'),
+                 url('assets/BasisGrotesquePro-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'NB International';
+            src: url('NBInternationalMonoWebfont.woff2') format('woff2'),
+                 url('NBInternationalMonoWebfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Basis Grotesque Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #faf9f2; 
+            color: #111;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            /* Allowed scrolling for the archive page */
+            overflow-y: auto; 
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 2vw;
+            z-index: 100;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0px;
+            color: #fff;
+            mix-blend-mode: difference; 
+            font-weight: 500;
+            pointer-events: none; /* Let clicks pass through empty space */
+        }
+
+        nav .logo, nav .nav-links {
+            pointer-events: auto; /* Re-enable clicks on the text */
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* --- Contact Sheet Grid Layout --- */
+        .archive-container {
+            /* Pushes grid below the fixed nav and gives side margins */
+            padding: 120px 2vw 5vw 2vw; 
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .contact-sheet-grid {
+            display: grid;
+            /* 4 columns on desktop, scaling down based on screen width */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4vw 2vw; /* Vertical gap, Horizontal gap */
+        }
+
+        /* Responsive Breakpoints for smaller screens */
+        @media (max-width: 1024px) {
+            .contact-sheet-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .contact-sheet-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .contact-sheet-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- Individual Grid Items --- */
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .grid-image-wrapper {
+            width: 100%;
+            /* Forces a strict 3:4 portrait crop for that uniform contact sheet look */
+            aspect-ratio: 3 / 4; 
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+            background-color: rgba(0, 0, 0, 0.05); /* Very light grey placeholder before images load */
+        }
+
+        .grid-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        /* Hover Effect: Slight image scale */
+        .grid-item:hover .grid-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .grid-caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-family: 'NB International', monospace; /* Uses the secondary font for captions */
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-title {
+            font-weight: 500;
+        }
+
+        .grid-meta {
+            color: rgba(0, 0, 0, 0.5);
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html">Estefi Panizza</a>
+        </div>
+        <div class="nav-links">
+            <div><a href="/">Work</a></div>
+            <div><a href="archive.html">Archive</a></div> <div><a href="about.html">About</a></div>
+            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="https://instagram.com/estefi_panizza/">Instagram</a></div>
+        </div>
+    </nav>
+
+    <div class="archive-container">
+        <div class="contact-sheet-grid" id="contact-sheet-grid">
+            </div>
+    </div>
+
+    <script>
+        const gridContainer = document.getElementById('contact-sheet-grid');
+
+        async function loadArchiveData() {
+            try {
+                // Fetch the exact same JSON file that powers the homepage and project pages
+                const response = await fetch('./projects.json');
+                const projectsData = await response.json();
+
+                // Convert JSON object into an array so we can map over it
+                const projectsArray = Object.keys(projectsData).map(key => {
+                    return {
+                        id: key,
+                        ...projectsData[key]
+                    };
+                });
+
+                // Generate the HTML for each project in the grid
+                projectsArray.forEach(project => {
+                    // Safety check: Grab the first image if media exists
+                    const firstImage = project.media && project.media.length > 0 ? project.media[0].src : '';
+                    
+                    const gridItem = document.createElement('a');
+                    gridItem.href = `project.html?id=${project.id}`; // Connects perfectly to your template
+                    gridItem.className = 'grid-item';
+
+                    gridItem.innerHTML = `
+                        <div class="grid-image-wrapper">
+                            <img src="${firstImage}" alt="${project.title}" loading="lazy">
+                        </div>
+                        <div class="grid-caption">
+                            <div class="grid-title">${project.title}</div>
+                            <div class="grid-meta">${project.client} <br/> ${project.year}</div>
+                        </div>
+                    `;
+
+                    gridContainer.appendChild(gridItem);
+                });
+
+            } catch (error) {
+                console.error("Error loading projects.json:", error);
+                gridContainer.innerHTML = `<p style="padding: 2vw;">Failed to load archive.</p>`;
+            }
+        }
+
+        // Kick off the script
+        loadArchiveData();
+    </script>
+</body>
+</html>

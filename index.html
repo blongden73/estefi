@@ -252,9 +252,9 @@
         }
 
         .text-overlay-panel {
-            background-color: #faf9f2d4;
+            background-color: #ffffffe2;
             position: absolute;
-            top: 4vw;
+            top: 4.8vw;
             left: 0;
             right: 0;
             bottom: 0;
@@ -363,6 +363,8 @@
                         title: project.title,
                         details: project.location, // Assuming 'location' based on project.html code
                         date: project.year,       // Assuming 'year' based on project.html code
+                        category: project.category,       // Assuming 'year' based on project.html code
+                        client: project.client,       // Assuming 'year' based on project.html code
                         // Grab the first piece of media to use as the index thumbnail
                         imgSrc: project.media && project.media.length > 0 ? project.media[0].src : '' 
                     };
@@ -401,7 +403,7 @@
                 textItem.innerHTML = `
                     <a href="${projectUrl}" class="project-link" onclick="handleProjectClick(event, ${index})">
                         <div class="project-title">${project.title}</div>
-                        <div class="project-details">${project.details}<br/>${project.date}</div>
+                        <div class="project-details">${project.client}<br/>${project.category} - ${project.date}</div>
                     </a>
                 `;
                 textTrack.appendChild(textItem);
