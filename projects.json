@@ -3,7 +3,7 @@
       "client": "Sana Jardin",  
       "title": "Alchemy of Energy",
       "location": "London",
-      "year": "2025",
+      "year": "2024",
       "category": "CAMPAIGN",
       "media": [
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-1.jpg", "padded": false },
@@ -142,7 +142,7 @@
       "client": "DTS",  
       "title": "Beyond the ring",
       "location": "Buenos Aires",
-      "year": "2025",
+      "year": "2023",
       "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
@@ -172,7 +172,7 @@
       "client": "Sweaty Betty",  
       "title": "SB Concept store",
       "location": "New York",
-      "year": "2025",
+      "year": "2021",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/sb/sb-1.jpg", "padded": false },
@@ -188,7 +188,7 @@
       "client": "Speedo",  
       "title": "Go full Speedo",
       "location": "New York",
-      "year": "2025",
+      "year": "2024",
       "category": "ACTIVEWEAR",
       "media": [
         { "type": "image", "src": "/new-images/speedo/speedo1.jpg", "padded": false },
