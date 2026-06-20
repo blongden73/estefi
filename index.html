@@ -417,6 +417,11 @@
     <div class="mobile-list" id="mobile-list"></div>
 
     <script>
+        // ==========================================
+        // CONFIGURATION
+        // ==========================================
+        const RANDOMIZE_PROJECTS = false; // Change this to false to keep JSON order
+        
         const textTrack = document.getElementById('text-track');
         const imageTrack = document.getElementById('image-track');
         const mobileList = document.getElementById('mobile-list');
@@ -448,10 +453,14 @@
                     };
                 });
 
-                // Randomize the order of the projects
-                for (let i = originalProjects.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [originalProjects[i], originalProjects[j]] = [originalProjects[j], originalProjects[i]];
+                // ==========================================
+                // Optional: Randomize the order of the projects
+                // ==========================================
+                if (RANDOMIZE_PROJECTS) {
+                    for (let i = originalProjects.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [originalProjects[i], originalProjects[j]] = [originalProjects[j], originalProjects[i]];
+                    }
                 }
 
                 N = originalProjects.length;
