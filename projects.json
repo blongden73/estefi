@@ -159,6 +159,10 @@
         { "type": "image", "src": "/new-images/spanx/spanx-bala-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.3.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-8.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-9.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-10.jpg", "padded": false }
@@ -272,6 +276,25 @@
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom11.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom12.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom13.jpg", "padded": false }
+      ]
+    },
+    "bandier-nb": {
+      "client": "Bandier",  
+      "title": "New Balance x Bandier",
+      "location": "New York",
+      "year": "2022",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/bandier/nbxbandier1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/nbxbandier10.jpg", "padded": false }
       ]
     }
   }
