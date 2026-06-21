@@ -50,7 +50,10 @@
         { "type": "image", "src": "/new-images/bumble/bumble-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bumble/bumble-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bumble/bumble-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bumble/bumble-7.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/bumble/bumble-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bumble/bumble-10.jpg", "padded": false }
       ]
     }, 
     "dts-hi-tech": {
@@ -170,7 +173,10 @@
         { "type": "image", "src": "/new-images/spanx/spanx-bala-3.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-bala-5.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-bala-10.jpg", "padded": false }
       ]
     },
     "sweaty-betty-concept-store": {
@@ -224,6 +230,63 @@
         { "type": "image", "src": "/new-images/spanx/ee7.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/ee8.jpg", "padded": false }
       ]
+    },
+    "dts-soft-lux": {
+      "client": "DTS",  
+      "title": "Soft Lux",
+      "location": "Montevideo",
+      "year": "2024",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-uruguay1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-uruguay8.jpg", "padded": false }
+      ]
+    },
+    "dts-objects": {
+      "client": "DTS",  
+      "title": "Objects",
+      "location": "Berlin",
+      "year": "2022",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-objets1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets10.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-objets11.jpg", "padded": false }
+      ]
+    },
+    "bandier-ecomm": {
+      "client": "Bandier",  
+      "title": "Bandier Ecomm",
+      "location": "New York",
+      "year": "2022",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom10.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom11.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom12.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom13.jpg", "padded": false }
+      ]
     }
-    
   }
