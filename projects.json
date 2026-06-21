@@ -1,5 +1,5 @@
 {    
-    "spanx-pr": {
+    "spanx-red-shop": {
     "client": "Spanx",  
     "title": "25 years of Spanx",
     "location": "New York",
@@ -12,7 +12,9 @@
       { "type": "image", "src": "/new-images/spanx/spanx-red-4.jpg", "padded": false },
       { "type": "image", "src": "/new-images/spanx/spanx-red-5.jpg", "padded": false },
       { "type": "image", "src": "/new-images/spanx/spanx-red-6.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/spanx/spanx-red-7.jpg", "padded": false }
+      { "type": "image", "src": "/new-images/spanx/spanx-red-7.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/spanx/spanx-red-8.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/spanx/spanx-red-9.jpg", "padded": false }
     ]
     },
     "sana-jardin": {
@@ -29,7 +31,10 @@
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-6.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-8.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-10.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-11.jpg", "padded": false }
       ]
     },
     "bumble": {
@@ -65,7 +70,7 @@
     },
     "spanx-nyc": {
       "client": "Spanx",  
-      "title": "OnForm Yoga collection",
+      "title": "OnForm Yoga",
       "location": "New York",
       "year": "2025",
       "category": "ACTIVEWEAR",
