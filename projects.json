@@ -6,6 +6,7 @@
     "year": "2025",
     "category": "FASHION",
     "media": [
+      { "type": "video", "src": "/new-images/spanx/spanx-red-film.mp4", "padded": false },
       { "type": "image", "src": "/new-images/spanx/spanx-red-1.jpg", "padded": false },
       { "type": "image", "src": "/new-images/spanx/spanx-red-2.jpg", "padded": false },
       { "type": "image", "src": "/new-images/spanx/spanx-red-3.jpg", "padded": false },
@@ -24,6 +25,7 @@
       "year": "2024",
       "category": "CAMPAIGN",
       "media": [
+        { "type": "video", "src": "/new-images/sana-jardin/sj-film.mp4", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-2.jpg", "padded": false },
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-3.jpg", "padded": false },
@@ -56,6 +58,82 @@
         { "type": "image", "src": "/new-images/bumble/bumble-10.jpg", "padded": false }
       ]
     },
+    "spanx-bala": {
+        "client": "Spanx",  
+        "title": "Spanx x Bala",
+        "location": "New York",
+        "year": "2025",
+        "category": "FASHION",
+        "media": [
+          { "type": "video", "src": "/new-images/spanx/spanx-bala-film.mp4", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-4.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-5.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-7.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-7.1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-7.2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-7.3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-8.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-9.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/spanx/spanx-bala-10.jpg", "padded": false }
+        ]
+      },
+      "dts-soft-lux": {
+        "client": "DTS",  
+        "title": "Soft Lux",
+        "location": "Montevideo",
+        "year": "2024",
+        "category": "FASHION",
+        "media": [
+          { "type": "image", "src": "/new-images/dts/dts-uruguay1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay4.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay5.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay6.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay7.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-uruguay8.jpg", "padded": false }
+        ]
+      },
+      "sweaty-betty-concept-store": {
+        "client": "Sweaty Betty",  
+        "title": "SB Concept store",
+        "location": "New York",
+        "year": "2021",
+        "category": "FASHION",
+        "media": [
+          { "type": "video", "src": "/new-images/sb/sb-film.mp4", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-4.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-5.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-6.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-7.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-8.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/sb/sb-9.jpg", "padded": false }
+        ]
+      },
+      "speedo-go-full-speedo": {
+        "client": "Speedo",  
+        "title": "Go Full Speedo",
+        "location": "New York",
+        "year": "2024",
+        "category": "ACTIVEWEAR",
+        "media": [
+          { "type": "image", "src": "/new-images/speedo/speedo1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo4.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo5.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo6.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo7.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/speedo/speedo8.jpg", "padded": false }
+        ]
+      },
     "spanx-nyc": {
       "client": "Spanx",  
       "title": "OnForm Yoga",
@@ -146,63 +224,6 @@
         { "type": "image", "src": "/new-images/dts/dts-editorial-10.jpg", "padded": false }
       ]
     },
-    "spanx-bala": {
-      "client": "Spanx",  
-      "title": "Spanx x Bala",
-      "location": "New York",
-      "year": "2025",
-      "category": "FASHION",
-      "media": [
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-1.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-2.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-3.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-4.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-5.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.1.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.2.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-7.3.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-9.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-bala-10.jpg", "padded": false }
-      ]
-    },
-    "sweaty-betty-concept-store": {
-      "client": "Sweaty Betty",  
-      "title": "SB Concept store",
-      "location": "New York",
-      "year": "2021",
-      "category": "FASHION",
-      "media": [
-        { "type": "image", "src": "/new-images/sb/sb-1.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-2.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-3.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-4.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-5.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/sb/sb-9.jpg", "padded": false }
-      ]
-    },
-    "speedo-go-full-speedo": {
-      "client": "Speedo",  
-      "title": "Go Full Speedo",
-      "location": "New York",
-      "year": "2024",
-      "category": "ACTIVEWEAR",
-      "media": [
-        { "type": "image", "src": "/new-images/speedo/speedo1.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo2.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo3.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo4.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo5.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/speedo/speedo8.jpg", "padded": false }
-      ]
-    },
     "spanx-elevated-ecomm": {
       "client": "Spanx",  
       "title": "Elevated Ecomm",
@@ -218,23 +239,6 @@
         { "type": "image", "src": "/new-images/spanx/ee6.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/ee7.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/ee8.jpg", "padded": false }
-      ]
-    },
-    "dts-soft-lux": {
-      "client": "DTS",  
-      "title": "Soft Lux",
-      "location": "Montevideo",
-      "year": "2024",
-      "category": "FASHION",
-      "media": [
-        { "type": "image", "src": "/new-images/dts/dts-uruguay1.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay2.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay3.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay4.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay5.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/dts/dts-uruguay8.jpg", "padded": false }
       ]
     },
     "dts-objects": {

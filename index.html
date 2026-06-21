@@ -299,7 +299,8 @@
             cursor: pointer;
         }
 
-        .image-wrapper img {
+        .image-wrapper img,
+        .image-wrapper video { /* Added video support */
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -363,7 +364,8 @@
                 overflow: hidden;
             }
 
-            .mobile-image-wrapper img {
+            .mobile-image-wrapper img,
+            .mobile-image-wrapper video { /* Added video support */
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -441,6 +443,12 @@
                 // Convert JSON object into an array we can map over
                 originalProjects = Object.keys(projectsData).map(key => {
                     const project = projectsData[key];
+                    
+                    // NEW: Determine if the first media item is an image or a video
+                    const firstMedia = project.media && project.media.length > 0 ? project.media[0] : null;
+                    const mediaType = firstMedia ? (firstMedia.type || 'image') : 'image';
+                    const mediaSrc = firstMedia ? firstMedia.src : '';
+
                     return {
                         id: key, 
                         title: project.title,
@@ -448,8 +456,8 @@
                         date: project.year,       
                         category: project.category,       
                         client: project.client,       
-                        // Grab the first piece of media to use as the index thumbnail
-                        imgSrc: project.media && project.media.length > 0 ? project.media[0].src : '' 
+                        mediaType: mediaType,
+                        mediaSrc: mediaSrc
                     };
                 });
 
@@ -494,13 +502,19 @@
                 `;
                 textTrack.appendChild(textItem);
 
-                // Image Setup
+                // Image/Video Setup
                 const imgItem = document.createElement('div');
                 imgItem.classList.add('image-wrapper');
                 imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
+
+                // Render video tag if type is video, otherwise render image
+                const mediaHTML = project.mediaType === 'video' 
+                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline></video>`
+                    : `<img src="${project.mediaSrc}" alt="${project.title}">`;
+
                 imgItem.innerHTML = `
                     <a href="${projectUrl}" onclick="handleProjectClick(event, ${index})">
-                        <img src="${project.imgSrc}" alt="${project.title}">
+                        ${mediaHTML}
                     </a>
                 `;
                 imageTrack.appendChild(imgItem);
@@ -517,9 +531,14 @@
                 mobileItem.href = projectUrl;
                 mobileItem.className = 'mobile-item';
 
+                // Render video tag if type is video, otherwise render image
+                const mediaHTML = project.mediaType === 'video' 
+                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline></video>`
+                    : `<img src="${project.mediaSrc}" alt="${project.title}" loading="lazy">`;
+
                 mobileItem.innerHTML = `
                     <div class="mobile-image-wrapper">
-                        <img src="${project.imgSrc}" alt="${project.title}" loading="lazy">
+                        ${mediaHTML}
                     </div>
                     <div class="mobile-title">${project.title}</div>
                     <div class="mobile-details">${project.client} / ${project.category} - ${project.date}</div>
