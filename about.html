@@ -101,7 +101,7 @@
         }
 
         nav a {
-            color: inherit; /* FIXED: Now inherits the correct color whether menu is open or closed */
+            color: inherit; 
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -240,7 +240,7 @@
             height: 1px;
             bottom: 0;
             left: 0;
-            background-color: #000; /* Match underline to text */
+            background-color: #000; 
             transform-origin: bottom right;
             transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
         }
@@ -263,6 +263,31 @@
 
         .portrait-img:hover {
             filter: grayscale(0%);
+        }
+
+        /* --- Toast Notification Styles --- */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background-color: #111;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         /* --- Keyframes --- */
@@ -354,6 +379,12 @@
                 grid-column: span 12;
                 margin-bottom: 2rem;
             }
+            
+            .toast {
+                width: 90%;
+                text-align: center;
+                bottom: 1rem;
+            }
         }
     </style>
 </head>
@@ -373,7 +404,7 @@
             <div><a href="/">Work</a></div>
             <div><a href="/overview.html">Index</a></div>
             <div><a href="/about.html">About</a></div>
-            <div><a href="mailto:hello@estefipanizza.com">Contact</a></div>
+            <div><a href="/about.html#email">Contact</a></div>
             <div><a href="https://instagram.com/estefi_panizza/">Instagram</a></div>
         </div>
     </nav>
@@ -401,10 +432,10 @@
 
         <div class="info-grid">
             
-            <div class="info-col">
+            <div id="email" class="info-col">
                 <h3>Contact / Social</h3>
                 <ul>
-                    <li><a href="mailto:hello@estefi-panizza.com">hello@estefi-panizza.com</a></li>
+                    <li><a href="#" id="copy-email-btn">hello@estefi-panizza.com</a></li>
                     <li><a href="https://www.instagram.com/estefi_panizza/" target="_blank">Instagram</a></li>
                     <li><a href="https://www.linkedin.com/in/estefania-panizza/" target="_blank">LinkedIn</a></li>
                 </ul>
@@ -433,6 +464,8 @@
 
         </div>
     </div>
+
+    <div id="toast" class="toast">Email copied to clipboard</div>
 
     <script>
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -465,6 +498,34 @@
                 mainNav.classList.remove('menu-open'); 
                 document.body.style.overflow = 'auto'; 
             }
+        });
+
+        // ==========================================
+        // COPY TO CLIPBOARD LOGIC
+        // ==========================================
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+
+        copyEmailBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop the page from jumping
+            
+            const emailAddress = copyEmailBtn.innerText;
+
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                // Show the toast
+                toast.classList.add('show');
+                
+                // Clear any existing timeouts so rapid clicking doesn't break it
+                clearTimeout(toastTimeout);
+                
+                // Hide after 3 seconds
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error("Could not copy text: ", err);
+            });
         });
     </script>
 </body>
