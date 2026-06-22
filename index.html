@@ -289,7 +289,6 @@
             opacity: 0.15; 
             transform: scale(1);
             filter: blur(5px);
-            /* NEW: Light grey placeholder while media lazy loads */
             background-color: rgba(0,0,0,0.03); 
         }
 
@@ -306,7 +305,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Hide the broken image icon before lazy load pops in */
             color: transparent; 
         }
 
@@ -488,23 +486,21 @@
         // ==========================================
         function manageLazyLoading(currentIndex) {
             const imageItems = document.querySelectorAll('.image-wrapper');
-            // Creates a safe buffer window: load the current item, 2 before, and 2 after
             const indicesToLoad = [
-                currentIndex - 2, 
-                currentIndex - 1, 
-                currentIndex, 
-                currentIndex + 1, 
-                currentIndex + 2
+                currentIndex - 2, currentIndex - 1, currentIndex, currentIndex + 1, currentIndex + 2
             ];
 
             indicesToLoad.forEach(idx => {
-                // Ensure we don't try to load an index that doesn't exist
                 if (idx >= 0 && idx < imageItems.length) {
                     const media = imageItems[idx].querySelector('img, video');
-                    // If it has a data-src, it hasn't been loaded yet
                     if (media && media.dataset.src) {
                         media.src = media.dataset.src;
-                        media.removeAttribute('data-src'); // Prevent checking it again
+                        media.removeAttribute('data-src');
+                        
+                        // Tell the browser to start fetching the video metadata right away
+                        if (media.tagName === 'VIDEO') {
+                            media.load();
+                        }
                     }
                 }
             });
@@ -529,9 +525,9 @@
                 imgItem.classList.add('image-wrapper');
                 imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
 
-                // NEW: Use data-src instead of src. The browser will hold off downloading.
+                // AUTOPLAY REMOVED: Videos are now strictly controlled by JS
                 const mediaHTML = project.mediaType === 'video' 
-                    ? `<video data-src="${project.mediaSrc}" autoplay muted loop playsinline preload="none"></video>`
+                    ? `<video data-src="${project.mediaSrc}" muted loop playsinline preload="none"></video>`
                     : `<img data-src="${project.mediaSrc}" alt="${project.title}">`;
 
                 imgItem.innerHTML = `
@@ -542,7 +538,9 @@
                 imageTrack.appendChild(imgItem);
             });
 
-            // Initial load delay to let the DOM settle before snapping to center
+            // IMPORTANT: Start downloading the hero image/video IMMEDIATELY, don't wait for the 100ms timeout
+            manageLazyLoading(activeIndex);
+
             setTimeout(() => {
                 updateActiveProject(N);
             }, 100);
@@ -550,15 +548,38 @@
 
         // 2b. Build Mobile DOM
         function initMobile() {
+            // Set up an Intersection Observer to watch mobile videos
+            const mobileVideoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    
+                    if (entry.isIntersecting) {
+                        // If it enters the screen, load the src if it hasn't been loaded
+                        if (video.dataset.src) {
+                            video.src = video.dataset.src;
+                            video.removeAttribute('data-src');
+                            video.load();
+                        }
+                        // Play the video and catch any browser autoplay blocks
+                        video.play().catch(e => console.log("Video wait", e));
+                    } else {
+                        // If it leaves the screen, pause it immediately to save CPU/Memory
+                        if (!video.paused) {
+                            video.pause();
+                        }
+                    }
+                });
+            }, { rootMargin: "100px", threshold: 0.3 }); // Triggers when 30% of the video is visible
+
             originalProjects.forEach(project => {
                 const projectUrl = `project.html?id=${project.id}`;
                 const mobileItem = document.createElement('a');
                 mobileItem.href = projectUrl;
                 mobileItem.className = 'mobile-item';
 
-                // For mobile, we use the browser's native loading="lazy" for extreme performance
+                // We use data-src for mobile videos too so they don't block the initial page load
                 const mediaHTML = project.mediaType === 'video' 
-                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline preload="none"></video>`
+                    ? `<video data-src="${project.mediaSrc}" muted loop playsinline preload="none"></video>`
                     : `<img src="${project.mediaSrc}" alt="${project.title}" loading="lazy">`;
 
                 mobileItem.innerHTML = `
@@ -570,6 +591,11 @@
                 `;
 
                 mobileList.appendChild(mobileItem);
+            });
+
+            // Tell the observer to watch all newly created mobile videos
+            document.querySelectorAll('.mobile-image-wrapper video').forEach(video => {
+                mobileVideoObserver.observe(video);
             });
         }
 
@@ -585,7 +611,6 @@
 
             activeIndex = newIndex;
             
-            // --> TRIGGER LAZY LOADING FOR CURRENT WINDOW <--
             manageLazyLoading(activeIndex);
 
             const textItems = document.querySelectorAll('.project-item');
@@ -596,8 +621,24 @@
             
             imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
 
-            textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
-            imageItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+            // === DESKTOP VIDEO PLAY/PAUSE LOGIC ===
+            imageItems.forEach((item, idx) => {
+                const isActive = idx === activeIndex;
+                item.classList.toggle('active', isActive);
+                
+                const video = item.querySelector('video');
+                if (video) {
+                    if (isActive) {
+                        // Tiny timeout ensures the source is fully assigned before pressing play
+                        setTimeout(() => {
+                            video.play().catch(e => console.log("Video wait", e));
+                        }, 50);
+                    } else {
+                        // Force pause on any video that is not the currently active slide
+                        if (!video.paused) video.pause();
+                    }
+                }
+            });
 
             clearTimeout(snapTimeout);
             
@@ -619,15 +660,24 @@
                     
                     activeIndex = mappedIndex;
 
-                    // Trigger lazy load immediately after invisible wrap
                     manageLazyLoading(activeIndex);
                     
                     const snapTextOffset = textItems[activeIndex].offsetTop;
                     textTrack.style.transform = `translateY(-${snapTextOffset}px)`;
                     imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
 
-                    textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
-                    imageItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+                    imageItems.forEach((item, idx) => {
+                        const isActive = idx === activeIndex;
+                        item.classList.toggle('active', isActive);
+                        const video = item.querySelector('video');
+                        if(video) {
+                            if (isActive) {
+                                setTimeout(() => video.play().catch(e => {}), 50);
+                            } else {
+                                if(!video.paused) video.pause();
+                            }
+                        }
+                    });
 
                     void document.body.offsetWidth; 
                     
