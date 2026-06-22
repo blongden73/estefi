@@ -289,6 +289,8 @@
             opacity: 0.15; 
             transform: scale(1);
             filter: blur(5px);
+            /* NEW: Light grey placeholder while media lazy loads */
+            background-color: rgba(0,0,0,0.03); 
         }
 
         .image-wrapper a {
@@ -300,10 +302,12 @@
         }
 
         .image-wrapper img,
-        .image-wrapper video { /* Added video support */
+        .image-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* Hide the broken image icon before lazy load pops in */
+            color: transparent; 
         }
 
         .image-wrapper.active {
@@ -365,7 +369,7 @@
             }
 
             .mobile-image-wrapper img,
-            .mobile-image-wrapper video { /* Added video support */
+            .mobile-image-wrapper video {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -422,7 +426,7 @@
         // ==========================================
         // CONFIGURATION
         // ==========================================
-        const RANDOMIZE_PROJECTS = false; // Change this to false to keep JSON order
+        const RANDOMIZE_PROJECTS = false; 
         
         const textTrack = document.getElementById('text-track');
         const imageTrack = document.getElementById('image-track');
@@ -440,11 +444,8 @@
                 const response = await fetch('./projects.json');
                 const projectsData = await response.json();
 
-                // Convert JSON object into an array we can map over
                 originalProjects = Object.keys(projectsData).map(key => {
                     const project = projectsData[key];
-                    
-                    // NEW: Determine if the first media item is an image or a video
                     const firstMedia = project.media && project.media.length > 0 ? project.media[0] : null;
                     const mediaType = firstMedia ? (firstMedia.type || 'image') : 'image';
                     const mediaSrc = firstMedia ? firstMedia.src : '';
@@ -461,9 +462,6 @@
                     };
                 });
 
-                // ==========================================
-                // Optional: Randomize the order of the projects
-                // ==========================================
                 if (RANDOMIZE_PROJECTS) {
                     for (let i = originalProjects.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
@@ -475,7 +473,6 @@
                 infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
                 activeIndex = N;
 
-                // Build the DOM
                 initDesktop();
                 initMobile();
 
@@ -486,12 +483,38 @@
             }
         }
 
+        // ==========================================
+        // CUSTOM LAZY LOADER FOR DESKTOP WHEEL
+        // ==========================================
+        function manageLazyLoading(currentIndex) {
+            const imageItems = document.querySelectorAll('.image-wrapper');
+            // Creates a safe buffer window: load the current item, 2 before, and 2 after
+            const indicesToLoad = [
+                currentIndex - 2, 
+                currentIndex - 1, 
+                currentIndex, 
+                currentIndex + 1, 
+                currentIndex + 2
+            ];
+
+            indicesToLoad.forEach(idx => {
+                // Ensure we don't try to load an index that doesn't exist
+                if (idx >= 0 && idx < imageItems.length) {
+                    const media = imageItems[idx].querySelector('img, video');
+                    // If it has a data-src, it hasn't been loaded yet
+                    if (media && media.dataset.src) {
+                        media.src = media.dataset.src;
+                        media.removeAttribute('data-src'); // Prevent checking it again
+                    }
+                }
+            });
+        }
+
         // 2a. Build Desktop DOM
         function initDesktop() {
             infiniteProjects.forEach((project, index) => {
                 const projectUrl = `project.html?id=${project.id}`;
 
-                // Text Setup
                 const textItem = document.createElement('div');
                 textItem.classList.add('project-item');
                 textItem.innerHTML = `
@@ -502,15 +525,14 @@
                 `;
                 textTrack.appendChild(textItem);
 
-                // Image/Video Setup
                 const imgItem = document.createElement('div');
                 imgItem.classList.add('image-wrapper');
                 imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
 
-                // Render video tag if type is video, otherwise render image
+                // NEW: Use data-src instead of src. The browser will hold off downloading.
                 const mediaHTML = project.mediaType === 'video' 
-                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline></video>`
-                    : `<img src="${project.mediaSrc}" alt="${project.title}">`;
+                    ? `<video data-src="${project.mediaSrc}" autoplay muted loop playsinline preload="none"></video>`
+                    : `<img data-src="${project.mediaSrc}" alt="${project.title}">`;
 
                 imgItem.innerHTML = `
                     <a href="${projectUrl}" onclick="handleProjectClick(event, ${index})">
@@ -520,7 +542,10 @@
                 imageTrack.appendChild(imgItem);
             });
 
-            setTimeout(() => updateActiveProject(N), 100);
+            // Initial load delay to let the DOM settle before snapping to center
+            setTimeout(() => {
+                updateActiveProject(N);
+            }, 100);
         }
 
         // 2b. Build Mobile DOM
@@ -531,9 +556,9 @@
                 mobileItem.href = projectUrl;
                 mobileItem.className = 'mobile-item';
 
-                // Render video tag if type is video, otherwise render image
+                // For mobile, we use the browser's native loading="lazy" for extreme performance
                 const mediaHTML = project.mediaType === 'video' 
-                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline></video>`
+                    ? `<video src="${project.mediaSrc}" autoplay muted loop playsinline preload="none"></video>`
                     : `<img src="${project.mediaSrc}" alt="${project.title}" loading="lazy">`;
 
                 mobileItem.innerHTML = `
@@ -548,9 +573,7 @@
             });
         }
 
-        // Handles clicks on both images and text
         window.handleProjectClick = function(event, index) {
-            // If the user clicks an item that is NOT the active one, scroll to it instead of linking
             if (window.innerWidth > 768 && index !== activeIndex) {
                 event.preventDefault(); 
                 updateActiveProject(index); 
@@ -558,9 +581,13 @@
         };
 
         function updateActiveProject(newIndex) {
-            if (window.innerWidth <= 768) return; // Prevent scroll math on mobile
+            if (window.innerWidth <= 768) return; 
 
             activeIndex = newIndex;
+            
+            // --> TRIGGER LAZY LOADING FOR CURRENT WINDOW <--
+            manageLazyLoading(activeIndex);
+
             const textItems = document.querySelectorAll('.project-item');
             const imageItems = document.querySelectorAll('.image-wrapper');
 
@@ -591,6 +618,9 @@
                     document.body.classList.add('no-transition');
                     
                     activeIndex = mappedIndex;
+
+                    // Trigger lazy load immediately after invisible wrap
+                    manageLazyLoading(activeIndex);
                     
                     const snapTextOffset = textItems[activeIndex].offsetTop;
                     textTrack.style.transform = `translateY(-${snapTextOffset}px)`;
