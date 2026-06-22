@@ -125,6 +125,11 @@
             font-weight: 500;
         }
 
+        /* --- Seamless Teleportation Class --- */
+        .no-transition, .no-transition * {
+            transition: none !important;
+        }
+
         /* --- Navigation --- */
         nav {
             position: fixed;
@@ -141,6 +146,41 @@
             color: #fff;
             mix-blend-mode: difference; 
             font-weight: 500;
+        }
+
+        /* Mobile Hamburger Button (Hidden on Desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            z-index: 200;
+            color: inherit;
+        }
+
+        .hamburger-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            left: 0;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .hamburger-line:first-child { top: 4px; }
+        .hamburger-line:last-child { top: 14px; }
+
+        /* Hamburger Morph Animation */
+        nav.menu-open .hamburger-line:first-child {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+        nav.menu-open .hamburger-line:last-child {
+            top: 9px;
+            transform: rotate(-45deg);
         }
 
         intro {
@@ -197,7 +237,6 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            /* REMOVED CSS TRANSITION: The JS now handles all the smooth, buttery movement */
             will-change: transform; 
         }
 
@@ -272,7 +311,6 @@
             top: calc(50vh - (var(--img-h) / 2)); 
             left: 0;
             right: 5vw;
-            /* REMOVED CSS TRANSITION: The JS now handles all the movement */
             will-change: transform; 
         }
 
@@ -326,14 +364,47 @@
 
             nav {
                 font-size: 1rem;
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: row; 
+                align-items: center;
                 padding: 1.5rem 5vw;
+                transition: mix-blend-mode 0.3s ease;
+            }
+
+            .mobile-menu-toggle {
+                display: block; 
+            }
+
+            .logo, .mobile-menu-toggle {
+                position: relative;
+                z-index: 200; 
             }
 
             nav .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #fff; /* FIXED: Now perfectly pure white */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                font-size: 2.5rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+                z-index: 100;
+            }
+
+            nav.menu-open {
+                mix-blend-mode: normal; 
+                color: #000; 
+            }
+
+            nav.menu-open .nav-links {
+                opacity: 1;
+                pointer-events: auto;
             }
 
             .split-layout {
@@ -344,7 +415,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 4rem; 
-                padding: 140px 5vw 5vw 5vw; 
+                padding: 100px 5vw 5vw 5vw; 
                 width: 100%;
             }
 
@@ -390,10 +461,16 @@
 </head>
 <body>
 
-    <nav>
+    <nav id="main-nav">
         <div class="logo">
             <a href="index.html">Estefi Panizza</a>
         </div>
+        
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <div class="nav-links">
             <div><a href="/">Work</a></div>
             <div><a href="/overview.html">Index</a></div>
@@ -419,6 +496,30 @@
 
     <script>
         // ==========================================
+        // MOBILE MENU LOGIC
+        // ==========================================
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('menu-open');
+            if (mainNav.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('menu-open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // ==========================================
         // CONFIGURATION
         // ==========================================
         const RANDOMIZE_PROJECTS = false; 
@@ -431,10 +532,9 @@
         let N = 0;
         let infiniteProjects = [];
 
-        // Continuous Variables for Free-Form Scrolling
         let targetIndex = 0;
         let currentIndex = 0;
-        let activeIndex = -1; // -1 forces an update on the first frame
+        let activeIndex = -1; 
 
         // 1. Fetch Projects from JSON
         async function fetchAndLoadProjects() {
@@ -470,7 +570,6 @@
                 N = originalProjects.length;
                 infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
                 
-                // Initialize the math variables in the exact middle of our infinite track
                 targetIndex = N;
                 currentIndex = N;
 
@@ -539,7 +638,6 @@
                 imageTrack.appendChild(imgItem);
             });
 
-            // Start the continuous rendering loop immediately
             renderLoop();
         }
 
@@ -596,7 +694,6 @@
                 const roundedCurrent = Math.round(currentIndex);
                 if (index !== roundedCurrent) {
                     event.preventDefault(); 
-                    // Let the smooth render loop guide us to the clicked index
                     targetIndex = index; 
                 }
             }
@@ -610,10 +707,8 @@
         window.addEventListener('wheel', (e) => {
             if (window.innerWidth <= 768) return; 
 
-            // Adjust multiplier (0.003) to change trackpad sensitivity
             targetIndex += e.deltaY * 0.003;
 
-            // Reset snap timer on every micro-movement
             clearTimeout(snapTimeout);
             snapTimeout = setTimeout(() => {
                 targetIndex = Math.round(targetIndex);
@@ -632,7 +727,6 @@
             const touchY = e.touches[0].clientY;
             const deltaY = lastTouchY - touchY;
             
-            // Adjust multiplier (0.005) to change touch drag sensitivity
             targetIndex += deltaY * 0.005; 
             lastTouchY = touchY;
 
@@ -642,9 +736,7 @@
             }, 100);
         });
 
-        // Helper function for JS calculations
         function getImageStep() {
-            // Evaluates to: (45vw) + 20px
             return (window.innerWidth * 0.45) + 20; 
         }
 
@@ -657,7 +749,6 @@
                 return;
             }
 
-            // 1. Maintain the Invisible Infinite Loop Bounds
             if (targetIndex < N) {
                 targetIndex += N;
                 currentIndex += N;
@@ -666,33 +757,26 @@
                 currentIndex -= N;
             }
 
-            // 2. Smoothly Ease Current Index towards Target Index
             currentIndex += (targetIndex - currentIndex) * 0.08;
 
-            // The specific whole integer we are currently highlighting
             const currentRoundedIdx = Math.round(currentIndex);
 
-            // 3. Move the Text Track (Linearly interpolating between items)
             const textItems = document.querySelectorAll('.project-item');
             if (textItems.length > 0) {
                 const floorIdx = Math.floor(currentIndex);
                 const ceilIdx = Math.min(floorIdx + 1, textItems.length - 1);
                 const remainder = currentIndex - floorIdx;
                 
-                // Safely grab the exact top pixel positions 
                 const offsetFloor = textItems[floorIdx] ? textItems[floorIdx].offsetTop : 0;
                 const offsetCeil = textItems[ceilIdx] ? textItems[ceilIdx].offsetTop : 0;
                 
-                // Calculate exact interpolated position
                 const textOffset = offsetFloor + ((offsetCeil - offsetFloor) * remainder);
                 textTrack.style.transform = `translate3d(0, -${textOffset}px, 0)`;
             }
 
-            // 4. Move the Image Track
             const imageOffset = currentIndex * getImageStep();
             imageTrack.style.transform = `translate3d(0, ${imageOffset}px, 0)`;
 
-            // 5. Update Active Classes and Video States ONLY when the integer changes
             if (currentRoundedIdx !== activeIndex) {
                 activeIndex = currentRoundedIdx;
                 
@@ -703,7 +787,6 @@
                 textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
                 iItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
 
-                // Video play/pause handling
                 iItems.forEach((item, idx) => {
                     const video = item.querySelector('video');
                     if (video) {
@@ -718,15 +801,15 @@
                 });
             }
 
-            // Keep the loop running endlessly
             requestAnimationFrame(renderLoop);
         }
 
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 document.body.style.overflow = 'hidden'; 
-                // Force a hard snap back to grid on window resize
-                targetIndex = Math.round(targetIndex); 
+                targetIndex = Math.round(targetIndex);
+                
+                mainNav.classList.remove('menu-open'); 
             } else {
                 document.body.style.overflow = 'auto'; 
             }

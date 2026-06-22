@@ -302,5 +302,27 @@
         { "type": "image", "src": "/new-images/bandier/nbxbandier9.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bandier/nbxbandier10.jpg", "padded": false }
       ]
+    },
+    "spanx-intimate": {
+      "client": "Spanx",  
+      "title": "Intimates",
+      "location": "New York",
+      "year": "2025",
+      "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-9.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-10.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-11.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-12.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-13.jpg", "padded": false }
+      ]
     }
   }

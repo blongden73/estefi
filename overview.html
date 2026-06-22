@@ -100,6 +100,41 @@
             opacity: 0.6;
         }
 
+        /* Mobile Hamburger Button (Hidden on Desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            z-index: 200;
+            color: inherit;
+        }
+
+        .hamburger-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            left: 0;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .hamburger-line:first-child { top: 4px; }
+        .hamburger-line:last-child { top: 14px; }
+
+        /* Hamburger Morph Animation */
+        nav.menu-open .hamburger-line:first-child {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+        nav.menu-open .hamburger-line:last-child {
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
         /* --- Index Layout --- */
         .index-container {
             padding: 120px 2vw 5vw 2vw; /* Pushes content below the fixed nav */
@@ -160,14 +195,87 @@
             object-fit: contain; /* ensures the whole image is seen */
         }
 
+        /* =========================================
+           MOBILE SPECIFIC STYLES
+           ========================================= */
+        @media (max-width: 768px) {
+            /* --- Mobile Nav Styles --- */
+            nav {
+                font-size: 1rem;
+                flex-direction: row; 
+                align-items: center;
+                padding: 1.5rem 5vw;
+            }
+
+            .mobile-menu-toggle {
+                display: block; 
+            }
+
+            .logo, .mobile-menu-toggle {
+                position: relative;
+                z-index: 200; 
+            }
+
+            nav .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #fff; /* Pure white overlay */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                font-size: 2.5rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+                z-index: 100;
+            }
+
+            nav.menu-open .nav-links {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            /* --- Mobile Layout Tweaks --- */
+            .index-container {
+                padding: 120px 5vw 5vw 5vw; 
+            }
+
+            .page-title {
+                font-size: 15vw;
+                margin-bottom: 4rem; 
+            }
+
+            .project-row {
+                margin-bottom: 3.5rem; 
+            }
+
+            .image-link {
+                height: 25vh; /* Slightly shorter images on mobile to fit nicely */
+            }
+
+            .project-images-container {
+                gap: 3vw; /* Slightly bigger gap on mobile touch screens */
+            }
+        }
+
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="main-nav">
         <div class="logo">
             <a href="index.html">Estefi Panizza</a>
         </div>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <div class="nav-links">
             <div><a href="/">Work</a></div>
             <div><a href="/overview.html">Index</a></div>
@@ -184,6 +292,44 @@
     </div>
 
     <script>
+        // ==========================================
+        // MOBILE MENU LOGIC
+        // ==========================================
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+
+        // Toggle the menu open and closed
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('menu-open');
+            // Lock scrolling on the body when the menu is open
+            if (mainNav.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+
+        // Close menu if a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('menu-open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Ensure menu resets properly if resizing from mobile to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('menu-open'); 
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+
+        // ==========================================
+        // INDEX DATA FETCHING LOGIC
+        // ==========================================
         const projectsListContainer = document.getElementById('projects-list');
 
         async function loadIndexData() {
@@ -239,7 +385,7 @@
 
             } catch (error) {
                 console.error("Error loading projects.json:", error);
-                projectsListContainer.innerHTML = `<p>Failed to load projects.</p>`;
+                projectsListContainer.innerHTML = `<p style="padding: 2vw;">Failed to load projects.</p>`;
             }
         }
 

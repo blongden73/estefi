@@ -99,16 +99,50 @@
         }
 
         nav a {
-            color: inherit;
+            color: inherit; /* FIXED: Now inherits the correct color whether menu is open or closed */
             text-decoration: none;
             transition: opacity 0.3s ease;
             pointer-events: auto; 
-            /* Ensures normal cursor when hovering over links */
             cursor: pointer; 
         }
 
         nav a:hover {
             opacity: 0.6;
+        }
+
+        /* Mobile Hamburger Button (Hidden on Desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            z-index: 200;
+            color: inherit;
+        }
+
+        .hamburger-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            left: 0;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .hamburger-line:first-child { top: 4px; }
+        .hamburger-line:last-child { top: 14px; }
+
+        /* Hamburger Morph Animation */
+        nav.menu-open .hamburger-line:first-child {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+        nav.menu-open .hamburger-line:last-child {
+            top: 9px;
+            transform: rotate(-45deg);
         }
 
         /* --- Horizontal Scroll Layout --- */
@@ -120,7 +154,6 @@
         }
 
         /* --- Custom Arrow Cursors --- */
-        /* Center the "click spot" exactly in the middle of the 32x32 arrow icon */
         .cursor-left {
             cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='19' y1='12' x2='5' y2='12'%3E%3C/line%3E%3Cpolyline points='12 19 5 12 12 5'%3E%3C/polyline%3E%3C/svg%3E") 16 16, auto;
         }
@@ -211,27 +244,62 @@
                 overflow-x: hidden;
             }
 
+            /* --- Mobile Nav Styles --- */
             nav {
                 font-size: 1rem;
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: row; 
+                align-items: center;
                 padding: 1.5rem 5vw;
+                transition: mix-blend-mode 0.3s ease;
+            }
+
+            .mobile-menu-toggle {
+                display: block; 
+            }
+
+            .logo, .mobile-menu-toggle {
+                position: relative;
+                z-index: 200; 
             }
 
             nav .nav-links {
-                flex-wrap: wrap;
-                gap: 1rem;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #fff; /* Pure white overlay */
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                font-size: 2.5rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+                z-index: 100;
             }
 
+            nav.menu-open {
+                mix-blend-mode: normal; 
+                color: #000; 
+            }
+
+            nav.menu-open .nav-links {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            /* --- Mobile Project View --- */
             .viewport {
-                display: none; /* Hide Desktop Horizontal Scroll */
+                display: none; 
             }
 
             .mobile-project-view {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                padding: 120px 0vw 5vw 0vw; /* Pushed down to clear nav */
+                padding: 120px 0vw 5vw 0vw; 
             }
 
             .mobile-image-slide {
@@ -247,7 +315,7 @@
             }
 
             .mobile-project-info {
-                padding: 3rem 5vw 4rem 5vw; /* Padding for the text block at the bottom */
+                padding: 3rem 5vw 4rem 5vw; 
             }
 
             .mobile-project-title {
@@ -271,10 +339,16 @@
 </head>
 <body>
 
-    <nav>
+    <nav id="main-nav">
         <div class="logo">
             <a href="index.html">Estefi Panizza</a>
         </div>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <div class="nav-links">
             <div><a href="/">Work</a></div>
             <div><a href="/overview.html">Index</a></div>
@@ -291,8 +365,35 @@
     <div class="mobile-project-view" id="mobile-project-view"></div>
 
     <script>
+        // ==========================================
+        // MOBILE MENU LOGIC
+        // ==========================================
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('menu-open');
+            if (mainNav.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('menu-open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // ==========================================
+        // PROJECT LOADING & SCROLL LOGIC
+        // ==========================================
         const scrollContainer = document.getElementById('scroll-container');
-        const mobileProjectView = document.getElementById('mobile-project-view'); // Grab mobile container
+        const mobileProjectView = document.getElementById('mobile-project-view'); 
         let targetScroll = 0;
         let currentScroll = 0;
         let maxScroll = 0;
@@ -390,7 +491,7 @@
             const viewport = document.querySelector('.viewport');
             
             viewport.addEventListener('mousemove', (e) => {
-                if (window.innerWidth <= 768) return; // Disable on mobile
+                if (window.innerWidth <= 768) return; 
 
                 if (e.clientX < window.innerWidth / 2) {
                     viewport.classList.add('cursor-left');
@@ -402,7 +503,7 @@
             });
 
             viewport.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) return; // Disable on mobile
+                if (window.innerWidth <= 768) return; 
                 if (e.target.closest('a')) return;
 
                 const jumpAmount = window.innerWidth * 0.6; 
@@ -429,9 +530,13 @@
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     document.body.style.overflow = 'hidden'; 
+                    mainNav.classList.remove('menu-open'); // Reset menu state
                     updateMaxScroll();
                 } else {
-                    document.body.style.overflow = 'auto'; 
+                    // Only set to auto if the menu is NOT currently open
+                    if (!mainNav.classList.contains('menu-open')) {
+                        document.body.style.overflow = 'auto'; 
+                    }
                 }
             });
 
@@ -443,7 +548,7 @@
             });
 
             window.addEventListener('wheel', (e) => {
-                if (window.innerWidth <= 768) return; // Native scrolling only on mobile
+                if (window.innerWidth <= 768) return; 
 
                 const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
                 targetScroll += delta * 1.5;

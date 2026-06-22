@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Estefi Panizza</title>
     <style>
-                    @font-face {
+            @font-face {
                 font-family: 'NB International';
                 src: url('NBInternationalMonoWebfont.woff2') format('woff2'),
                     url('NBInternationalMonoWebfont.woff') format('woff');
@@ -68,8 +68,6 @@
                 font-display: swap;
             }
 
-
-
         /* --- Reset & Base Styles --- */
         * {
             margin: 0;
@@ -103,7 +101,7 @@
         }
 
         nav a {
-            color: #fff;
+            color: inherit; /* FIXED: Now inherits the correct color whether menu is open or closed */
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
@@ -115,6 +113,41 @@
         nav .nav-links {
             display: flex;
             gap: 2rem;
+        }
+
+        /* Mobile Hamburger Button (Hidden on Desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+            z-index: 200;
+            color: inherit;
+        }
+
+        .hamburger-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            left: 0;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .hamburger-line:first-child { top: 4px; }
+        .hamburger-line:last-child { top: 14px; }
+
+        /* Hamburger Morph Animation */
+        nav.menu-open .hamburger-line:first-child {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+        nav.menu-open .hamburger-line:last-child {
+            top: 9px;
+            transform: rotate(-45deg);
         }
 
         /* --- About Page Layout --- */
@@ -143,7 +176,7 @@
         }
 
         .bio-section span {
-            color: rgba(0, 0, 0, 0.917); /* Matches the gray from your index */
+            color: rgba(0, 0, 0, 0.917); 
         }
 
         /* --- Info Grid (Clients, Contact, etc.) --- */
@@ -192,7 +225,7 @@
         }
 
         .info-col a {
-            color: #000000;
+            color: inherit;
             text-decoration: none;
             position: relative;
             display: inline-block;
@@ -207,7 +240,7 @@
             height: 1px;
             bottom: 0;
             left: 0;
-            background-color: #fff;
+            background-color: #000; /* Match underline to text */
             transform-origin: bottom right;
             transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
         }
@@ -256,7 +289,7 @@
             .info-col.portrait-col {
                 grid-column: span 12;
                 justify-content: flex-start;
-                order: -1; /* Move image to top on mobile */
+                order: -1; 
                 margin-bottom: 2rem;
             }
             .portrait-img {
@@ -266,6 +299,53 @@
         }
 
         @media (max-width: 768px) {
+            /* Mobile Nav Styles */
+            nav {
+                font-size: 1rem;
+                flex-direction: row; 
+                align-items: center;
+                padding: 1.5rem 5vw;
+                transition: mix-blend-mode 0.3s ease;
+            }
+
+            .mobile-menu-toggle {
+                display: block; 
+            }
+
+            .logo, .mobile-menu-toggle {
+                position: relative;
+                z-index: 200; 
+            }
+
+            nav .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #fff; 
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                font-size: 2.5rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+                z-index: 100;
+            }
+
+            nav.menu-open {
+                mix-blend-mode: normal; 
+                color: #000; 
+            }
+
+            nav.menu-open .nav-links {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            /* About Content Layout Adjustments */
             .bio-section {
                 font-size: 8vw;
                 margin-top: 2rem;
@@ -279,11 +359,16 @@
 </head>
 <body>
 
-    <!-- Top Navigation -->
-    <nav>
+    <nav id="main-nav">
         <div class="logo">
-            <a href="index.html">Estefi Panizza — Art Direction</a>
+            <a href="index.html">Estefi Panizza</a>
         </div>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <div class="nav-links">
             <div><a href="/">Work</a></div>
             <div><a href="/overview.html">Index</a></div>
@@ -293,10 +378,8 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="about-container">
         
-        <!-- Bio Statement -->
         <div class="bio-section">
             I’m a Senior Art Director with 10+ years of
             experience across fashion, beauty, and high-end 
@@ -316,10 +399,8 @@
             sense of ease and sophistication.</span>
         </div>
 
-        <!-- Details Grid -->
         <div class="info-grid">
             
-            <!-- Column 1: Contact & Socials -->
             <div class="info-col">
                 <h3>Contact / Social</h3>
                 <ul>
@@ -329,7 +410,6 @@
                 </ul>
             </div>
 
-            <!-- Column 2: Selected Clients -->
             <div class="info-col">
                 <h3>Selected Clients</h3>
                 <ul>
@@ -347,14 +427,45 @@
                 </ul>
             </div>
 
-            <!-- Column 3: Portrait -->
             <div class="info-col portrait-col">
-                <!-- Replace with actual portrait URL -->
                 <img src="new-images/estefi.jpeg" alt="Estefi Panizza" class="portrait-img">
             </div>
 
         </div>
     </div>
 
+    <script>
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+
+        // Toggle the menu open and closed
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('menu-open');
+            // Lock scrolling on the body when the menu is open
+            if (mainNav.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+
+        // Close menu if a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('menu-open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Ensure menu resets properly if resizing from mobile to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('menu-open'); 
+                document.body.style.overflow = 'auto'; 
+            }
+        });
+    </script>
 </body>
 </html>
