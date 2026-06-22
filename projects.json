@@ -142,13 +142,16 @@
       "year": "2025",
       "category": "ACTIVEWEAR",
       "media": [
+        { "type": "video", "src": "/new-images/spanx/onform-film.mp4", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-2.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-3.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-active-6.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/spanx/spanx-active-7.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/spanx/spanx-active-7.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-active-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-active-9.jpg", "padded": false }
       ]
     },
     "dts-cosy-care": {
@@ -278,12 +281,7 @@
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom5.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom6.jpg", "padded": false },
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom7.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom8.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom9.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom10.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom11.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom12.jpg", "padded": false },
-        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom13.jpg", "padded": false }
+        { "type": "image", "src": "/new-images/bandier/Bandier-Ecom8.jpg", "padded": false }
       ]
     },
     "bandier-nb": {
