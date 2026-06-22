@@ -305,13 +305,13 @@
     },
     "spanx-intimate": {
       "client": "Spanx",  
-      "title": "Intimates",
+      "title": "Shapewear & Intimates",
       "location": "New York",
       "year": "2025",
       "category": "FASHION",
       "media": [
-        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-Intimates-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/spanx/spanx-Intimates-1.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-Intimates-3.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-Intimates-4.jpg", "padded": false },
         { "type": "image", "src": "/new-images/spanx/spanx-Intimates-5.jpg", "padded": false },
