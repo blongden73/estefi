@@ -125,11 +125,6 @@
             font-weight: 500;
         }
 
-        /* --- Seamless Teleportation Class --- */
-        .no-transition, .no-transition * {
-            transition: none !important;
-        }
-
         /* --- Navigation --- */
         nav {
             position: fixed;
@@ -202,7 +197,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* REMOVED CSS TRANSITION: The JS now handles all the smooth, buttery movement */
+            will-change: transform; 
         }
 
         .project-item {
@@ -276,7 +272,8 @@
             top: calc(50vh - (var(--img-h) / 2)); 
             left: 0;
             right: 5vw;
-            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            /* REMOVED CSS TRANSITION: The JS now handles all the movement */
+            will-change: transform; 
         }
 
         .image-wrapper {
@@ -433,8 +430,11 @@
         let originalProjects = [];
         let N = 0;
         let infiniteProjects = [];
-        let activeIndex = 0; 
-        let snapTimeout;
+
+        // Continuous Variables for Free-Form Scrolling
+        let targetIndex = 0;
+        let currentIndex = 0;
+        let activeIndex = -1; // -1 forces an update on the first frame
 
         // 1. Fetch Projects from JSON
         async function fetchAndLoadProjects() {
@@ -469,7 +469,10 @@
 
                 N = originalProjects.length;
                 infiniteProjects = [...originalProjects, ...originalProjects, ...originalProjects];
-                activeIndex = N;
+                
+                // Initialize the math variables in the exact middle of our infinite track
+                targetIndex = N;
+                currentIndex = N;
 
                 initDesktop();
                 initMobile();
@@ -484,10 +487,10 @@
         // ==========================================
         // CUSTOM LAZY LOADER FOR DESKTOP WHEEL
         // ==========================================
-        function manageLazyLoading(currentIndex) {
+        function manageLazyLoading(currentIdx) {
             const imageItems = document.querySelectorAll('.image-wrapper');
             const indicesToLoad = [
-                currentIndex - 2, currentIndex - 1, currentIndex, currentIndex + 1, currentIndex + 2
+                currentIdx - 2, currentIdx - 1, currentIdx, currentIdx + 1, currentIdx + 2
             ];
 
             indicesToLoad.forEach(idx => {
@@ -497,7 +500,6 @@
                         media.src = media.dataset.src;
                         media.removeAttribute('data-src');
                         
-                        // Tell the browser to start fetching the video metadata right away
                         if (media.tagName === 'VIDEO') {
                             media.load();
                         }
@@ -525,7 +527,6 @@
                 imgItem.classList.add('image-wrapper');
                 imgItem.style.top = `calc(-1 * ${index} * (var(--img-h) + var(--img-gap)))`;
 
-                // AUTOPLAY REMOVED: Videos are now strictly controlled by JS
                 const mediaHTML = project.mediaType === 'video' 
                     ? `<video data-src="${project.mediaSrc}" muted loop playsinline preload="none"></video>`
                     : `<img data-src="${project.mediaSrc}" alt="${project.title}">`;
@@ -538,38 +539,30 @@
                 imageTrack.appendChild(imgItem);
             });
 
-            // IMPORTANT: Start downloading the hero image/video IMMEDIATELY, don't wait for the 100ms timeout
-            manageLazyLoading(activeIndex);
-
-            setTimeout(() => {
-                updateActiveProject(N);
-            }, 100);
+            // Start the continuous rendering loop immediately
+            renderLoop();
         }
 
         // 2b. Build Mobile DOM
         function initMobile() {
-            // Set up an Intersection Observer to watch mobile videos
             const mobileVideoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const video = entry.target;
                     
                     if (entry.isIntersecting) {
-                        // If it enters the screen, load the src if it hasn't been loaded
                         if (video.dataset.src) {
                             video.src = video.dataset.src;
                             video.removeAttribute('data-src');
                             video.load();
                         }
-                        // Play the video and catch any browser autoplay blocks
                         video.play().catch(e => console.log("Video wait", e));
                     } else {
-                        // If it leaves the screen, pause it immediately to save CPU/Memory
                         if (!video.paused) {
                             video.pause();
                         }
                     }
                 });
-            }, { rootMargin: "100px", threshold: 0.3 }); // Triggers when 30% of the video is visible
+            }, { rootMargin: "100px", threshold: 0.3 });
 
             originalProjects.forEach(project => {
                 const projectUrl = `project.html?id=${project.id}`;
@@ -577,7 +570,6 @@
                 mobileItem.href = projectUrl;
                 mobileItem.className = 'mobile-item';
 
-                // We use data-src for mobile videos too so they don't block the initial page load
                 const mediaHTML = project.mediaType === 'video' 
                     ? `<video data-src="${project.mediaSrc}" muted loop playsinline preload="none"></video>`
                     : `<img src="${project.mediaSrc}" alt="${project.title}" loading="lazy">`;
@@ -593,160 +585,148 @@
                 mobileList.appendChild(mobileItem);
             });
 
-            // Tell the observer to watch all newly created mobile videos
             document.querySelectorAll('.mobile-image-wrapper video').forEach(video => {
                 mobileVideoObserver.observe(video);
             });
         }
 
+        // Handle Desktop Click
         window.handleProjectClick = function(event, index) {
-            if (window.innerWidth > 768 && index !== activeIndex) {
-                event.preventDefault(); 
-                updateActiveProject(index); 
+            if (window.innerWidth > 768) {
+                const roundedCurrent = Math.round(currentIndex);
+                if (index !== roundedCurrent) {
+                    event.preventDefault(); 
+                    // Let the smooth render loop guide us to the clicked index
+                    targetIndex = index; 
+                }
             }
         };
 
-        function updateActiveProject(newIndex) {
-            if (window.innerWidth <= 768) return; 
-
-            activeIndex = newIndex;
-            
-            manageLazyLoading(activeIndex);
-
-            const textItems = document.querySelectorAll('.project-item');
-            const imageItems = document.querySelectorAll('.image-wrapper');
-
-            const textOffset = textItems[activeIndex].offsetTop;
-            textTrack.style.transform = `translateY(-${textOffset}px)`;
-            
-            imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
-
-            // === DESKTOP VIDEO PLAY/PAUSE LOGIC ===
-            imageItems.forEach((item, idx) => {
-                const isActive = idx === activeIndex;
-                item.classList.toggle('active', isActive);
-                
-                const video = item.querySelector('video');
-                if (video) {
-                    if (isActive) {
-                        // Tiny timeout ensures the source is fully assigned before pressing play
-                        setTimeout(() => {
-                            video.play().catch(e => console.log("Video wait", e));
-                        }, 50);
-                    } else {
-                        // Force pause on any video that is not the currently active slide
-                        if (!video.paused) video.pause();
-                    }
-                }
-            });
-
-            clearTimeout(snapTimeout);
-            
-            snapTimeout = setTimeout(() => {
-                let needsSnap = false;
-                let mappedIndex = activeIndex;
-
-                if (activeIndex < N) {
-                    mappedIndex = activeIndex + N;
-                    needsSnap = true;
-                } 
-                else if (activeIndex >= 2 * N) {
-                    mappedIndex = activeIndex - N;
-                    needsSnap = true;
-                }
-
-                if (needsSnap) {
-                    document.body.classList.add('no-transition');
-                    
-                    activeIndex = mappedIndex;
-
-                    manageLazyLoading(activeIndex);
-                    
-                    const snapTextOffset = textItems[activeIndex].offsetTop;
-                    textTrack.style.transform = `translateY(-${snapTextOffset}px)`;
-                    imageTrack.style.transform = `translateY(calc(${activeIndex} * (var(--img-h) + var(--img-gap))))`;
-
-                    imageItems.forEach((item, idx) => {
-                        const isActive = idx === activeIndex;
-                        item.classList.toggle('active', isActive);
-                        const video = item.querySelector('video');
-                        if(video) {
-                            if (isActive) {
-                                setTimeout(() => video.play().catch(e => {}), 50);
-                            } else {
-                                if(!video.paused) video.pause();
-                            }
-                        }
-                    });
-
-                    void document.body.offsetWidth; 
-                    
-                    document.body.classList.remove('no-transition');
-                }
-            }, 1000); 
-        }
-
         /* =========================================
-           SCROLL & SWIPE LISTENER LOGIC
+           FREE-FORM SCROLL & SNAP ENGINE
            ========================================= */
-        let isThrottled = false;
-        let scrollAccumulator = 0;
-        
+        let snapTimeout;
+
         window.addEventListener('wheel', (e) => {
             if (window.innerWidth <= 768) return; 
-            if (isThrottled) return;
 
-            scrollAccumulator += e.deltaY;
+            // Adjust multiplier (0.003) to change trackpad sensitivity
+            targetIndex += e.deltaY * 0.003;
 
-            if (Math.abs(scrollAccumulator) > 50) {
-                if (scrollAccumulator > 0) {
-                    updateActiveProject(activeIndex + 1); 
-                } else {
-                    updateActiveProject(activeIndex - 1); 
-                }
-                
-                scrollAccumulator = 0;
-                isThrottled = true;
-                
-                setTimeout(() => {
-                    isThrottled = false;
-                }, 800); 
-            }
+            // Reset snap timer on every micro-movement
+            clearTimeout(snapTimeout);
+            snapTimeout = setTimeout(() => {
+                targetIndex = Math.round(targetIndex);
+            }, 100); 
         });
 
-        let touchStartY = 0;
+        let lastTouchY = 0;
         window.addEventListener('touchstart', (e) => {
             if (window.innerWidth <= 768) return;
-            touchStartY = e.touches[0].clientY;
+            lastTouchY = e.touches[0].clientY;
         });
 
         window.addEventListener('touchmove', (e) => {
             if (window.innerWidth <= 768) return;
-            if (isThrottled) return;
             
-            const touchEndY = e.touches[0].clientY;
-            const delta = touchStartY - touchEndY; 
+            const touchY = e.touches[0].clientY;
+            const deltaY = lastTouchY - touchY;
             
-            if (Math.abs(delta) > 50) {
-                if (delta > 0) {
-                    updateActiveProject(activeIndex + 1);
-                } else {
-                    updateActiveProject(activeIndex - 1);
-                }
-                
-                touchStartY = touchEndY; 
-                isThrottled = true;
-                
-                setTimeout(() => {
-                    isThrottled = false;
-                }, 800);
-            }
+            // Adjust multiplier (0.005) to change touch drag sensitivity
+            targetIndex += deltaY * 0.005; 
+            lastTouchY = touchY;
+
+            clearTimeout(snapTimeout);
+            snapTimeout = setTimeout(() => {
+                targetIndex = Math.round(targetIndex);
+            }, 100);
         });
+
+        // Helper function for JS calculations
+        function getImageStep() {
+            // Evaluates to: (45vw) + 20px
+            return (window.innerWidth * 0.45) + 20; 
+        }
+
+        /* =========================================
+           CONTINUOUS RENDER LOOP
+           ========================================= */
+        function renderLoop() {
+            if (window.innerWidth <= 768) {
+                requestAnimationFrame(renderLoop);
+                return;
+            }
+
+            // 1. Maintain the Invisible Infinite Loop Bounds
+            if (targetIndex < N) {
+                targetIndex += N;
+                currentIndex += N;
+            } else if (targetIndex >= 2 * N) {
+                targetIndex -= N;
+                currentIndex -= N;
+            }
+
+            // 2. Smoothly Ease Current Index towards Target Index
+            currentIndex += (targetIndex - currentIndex) * 0.08;
+
+            // The specific whole integer we are currently highlighting
+            const currentRoundedIdx = Math.round(currentIndex);
+
+            // 3. Move the Text Track (Linearly interpolating between items)
+            const textItems = document.querySelectorAll('.project-item');
+            if (textItems.length > 0) {
+                const floorIdx = Math.floor(currentIndex);
+                const ceilIdx = Math.min(floorIdx + 1, textItems.length - 1);
+                const remainder = currentIndex - floorIdx;
+                
+                // Safely grab the exact top pixel positions 
+                const offsetFloor = textItems[floorIdx] ? textItems[floorIdx].offsetTop : 0;
+                const offsetCeil = textItems[ceilIdx] ? textItems[ceilIdx].offsetTop : 0;
+                
+                // Calculate exact interpolated position
+                const textOffset = offsetFloor + ((offsetCeil - offsetFloor) * remainder);
+                textTrack.style.transform = `translate3d(0, -${textOffset}px, 0)`;
+            }
+
+            // 4. Move the Image Track
+            const imageOffset = currentIndex * getImageStep();
+            imageTrack.style.transform = `translate3d(0, ${imageOffset}px, 0)`;
+
+            // 5. Update Active Classes and Video States ONLY when the integer changes
+            if (currentRoundedIdx !== activeIndex) {
+                activeIndex = currentRoundedIdx;
+                
+                manageLazyLoading(activeIndex);
+
+                const iItems = document.querySelectorAll('.image-wrapper');
+                
+                textItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+                iItems.forEach((item, idx) => item.classList.toggle('active', idx === activeIndex));
+
+                // Video play/pause handling
+                iItems.forEach((item, idx) => {
+                    const video = item.querySelector('video');
+                    if (video) {
+                        if (idx === activeIndex) {
+                            setTimeout(() => {
+                                video.play().catch(e => console.log("Video Wait"));
+                            }, 50);
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    }
+                });
+            }
+
+            // Keep the loop running endlessly
+            requestAnimationFrame(renderLoop);
+        }
 
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 document.body.style.overflow = 'hidden'; 
-                updateActiveProject(activeIndex);
+                // Force a hard snap back to grid on window resize
+                targetIndex = Math.round(targetIndex); 
             } else {
                 document.body.style.overflow = 'auto'; 
             }
