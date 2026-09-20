@@ -39,6 +39,22 @@
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-11.jpg", "padded": false }
       ]
     },
+    "dts-high-tech": {
+      "client": "DTS",  
+      "title": "Hi-teck",
+      "location": "Buenos Aires",
+      "year": "2024",
+      "category": "FASHION",
+        "media": [
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-1-1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-2.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-3.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-4.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-5.jpg", "padded": false },
+          { "type": "image", "src": "/new-images/dts/dts-hiteck-6.jpg", "padded": false }
+        ]
+      },
     "bumble": {
       "client": "Bumble",  
       "title": "Bumble BFF Campaign",
