@@ -46,7 +46,6 @@
       "year": "2024",
       "category": "FASHION",
         "media": [
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-1-1.jpg", "padded": false },
           { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
           { "type": "image", "src": "/new-images/dts/dts-hiteck-2.jpg", "padded": false },
           { "type": "image", "src": "/new-images/dts/dts-hiteck-3.jpg", "padded": false },
