@@ -18,6 +18,24 @@
       { "type": "image", "src": "/new-images/spanx/spanx-red-9.jpg", "padded": false }
     ]
     },
+    "handm-move": {
+    "client": "More Digital Studios x H&M Move",  
+    "title": "H&M Move",
+    "location": "Stokholm",
+    "year": "2026",
+    "category": "FASHION",
+    "media": [
+      { "type": "video", "src": "/new-images/hm/hm-1.mp4", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-2.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-3.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-4.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-5.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-6.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-7.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-8.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-9.jpg", "padded": false }
+    ]
+    },
     "sana-jardin": {
       "client": "Sana Jardin",  
       "title": "Alchemy of Energy",
