@@ -4,6 +4,7 @@
     "title": "25 years of Spanx",
     "location": "New York",
     "year": "2025",
+    "credits": "",
     "category": "FASHION",
     "media": [
       { "type": "video", "src": "/new-images/spanx/spanx-red-film.mp4", "padded": false },
@@ -19,10 +20,11 @@
     ]
     },
     "handm-move": {
-    "client": "More Digital Studios x H&M Move",  
+    "client": "More Digital x H&M Move",  
     "title": "H&M Move",
     "location": "Stokholm",
     "year": "2026",
+    "credits": "Creative Director - Zowie Bubalo | More Digital",
     "category": "FASHION",
     "media": [
       { "type": "video", "src": "/new-images/hm/hm-1.mp4", "padded": false },
@@ -41,6 +43,7 @@
       "title": "Alchemy of Energy",
       "location": "London",
       "year": "2024",
+      "credits": "",
       "category": "CAMPAIGN",
       "media": [
         { "type": "video", "src": "/new-images/sana-jardin/sj-film.mp4", "padded": false },
@@ -62,6 +65,7 @@
       "title": "Hi-teck",
       "location": "Buenos Aires",
       "year": "2026",
+      "credits": "",
       "category": "FASHION",
         "media": [
           { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
@@ -79,6 +83,7 @@
       "title": "Bumble BFF Campaign",
       "location": "Los Angeles",
       "year": "2025",
+      "credits": "",
       "category": "CAMPAIGN",
       "media": [
         { "type": "image", "src": "/new-images/bumble/bumble-1.jpg", "padded": false },
@@ -98,6 +103,7 @@
         "title": "Spanx x Bala",
         "location": "New York",
         "year": "2025",
+        "credits": "",
         "category": "FASHION",
         "media": [
           { "type": "video", "src": "/new-images/spanx/spanx-bala-film.mp4", "padded": false },
@@ -122,6 +128,7 @@
         "title": "Soft Lux",
         "location": "Montevideo",
         "year": "2024",
+        "credits": "",
         "category": "FASHION",
         "media": [
           { "type": "image", "src": "/new-images/dts/dts-uruguay1.jpg", "padded": false },
@@ -139,6 +146,7 @@
         "title": "The Power House",
         "location": "London",
         "year": "2021",
+        "credits": "",
         "category": "FASHION",
         "media": [
           { "type": "video", "src": "/new-images/sb/sb-film.mp4", "padded": false },
@@ -158,6 +166,7 @@
         "title": "Go Full Speedo",
         "location": "New York",
         "year": "2024",
+        "credits": "",
         "category": "ACTIVEWEAR",
         "media": [
           { "type": "image", "src": "/new-images/speedo/speedo1.jpg", "padded": false },
@@ -175,6 +184,7 @@
       "title": "OnForm Yoga",
       "location": "New York",
       "year": "2025",
+      "credits": "",
       "category": "ACTIVEWEAR",
       "media": [
         { "type": "video", "src": "/new-images/spanx/onform-film.mp4", "padded": false },
@@ -194,6 +204,7 @@
       "title": "Cosy Care",
       "location": "Buenos Aires",
       "year": "2025",
+      "credits": "",
       "category": "BEAUTY",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-cosy-care-1.jpg", "padded": false },
@@ -210,6 +221,7 @@
       "title": "Suite Talk",
       "location": "Buenos Aires",
       "year": "2024",
+      "credits": "",
       "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-honeymoon-1.jpg", "padded": false },
@@ -227,6 +239,7 @@
       "title": "Rebel Prep",
       "location": "Buenos Aires",
       "year": "2023",
+      "credits": "",
       "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-football-1.jpg", "padded": false },
@@ -241,6 +254,7 @@
       "title": "Reform",
       "location": "Buenos Aires",
       "year": "2025",
+      "credits": "",
       "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-circular-1.jpg", "padded": false },
@@ -256,6 +270,7 @@
       "title": "Beyond the ring",
       "location": "Buenos Aires",
       "year": "2023",
+      "credits": "",
       "category": "LIFESTYLE EDITORIAL",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-dts-btr-8.jpg", "padded": false },
@@ -271,6 +286,7 @@
       "title": "Elevated Ecomm",
       "location": "New York",
       "year": "2025",
+      "credits": "",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/spanx/ee1.jpg", "padded": false },
@@ -288,6 +304,7 @@
       "title": "Objects",
       "location": "Berlin",
       "year": "2022",
+      "credits": "",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/dts/dts-objets1.jpg", "padded": false },
@@ -307,6 +324,7 @@
       "title": "Bandier Ecomm",
       "location": "New York",
       "year": "2022",
+      "credits": "",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/bandier/Bandier-Ecom1.jpg", "padded": false },
@@ -324,6 +342,7 @@
       "title": "New Balance x Bandier",
       "location": "New York",
       "year": "2022",
+      "credits": "",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/bandier/nbxbandier1.jpg", "padded": false },
@@ -343,6 +362,7 @@
       "title": "Shapewear & Intimates",
       "location": "New York",
       "year": "2025",
+      "credits": "",
       "category": "FASHION",
       "media": [
         { "type": "image", "src": "/new-images/spanx/spanx-Intimates-2.jpg", "padded": false },

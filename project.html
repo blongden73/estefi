@@ -191,6 +191,15 @@
             margin-bottom: 1.5rem;
         }
 
+        .project-credit {
+            font-size: 1.8vw;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 0px;
+            margin-bottom: 1.5rem;
+            color: #bbbaba;
+        }
+
         .project-counter {
             font-size: 1.6rem;
             font-weight: 400;
@@ -322,8 +331,17 @@
                 font-size: 8vw;
                 font-weight: 400;
                 line-height: 1.05;
-                letter-spacing: -1px;
+                letter-spacing: 0px;
                 margin-bottom: 0.5rem;
+            }
+
+            .project-credit {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 1.05;
+                letter-spacing: 0px;
+                margin-bottom: 1.5rem;
+                color: #bbbaba;
             }
 
             .mobile-project-meta {
@@ -436,6 +454,7 @@
             titleSlide.innerHTML = `
                 <h1 class="project-title">${projectData.title}</h1>
                 <div class="project-counter">${projectData.location} — ${projectData.year}</div>
+                <div class="project-credits">${projectData.credits}</div>
                 <div class="bottom-details">${projectData.category}</div>
             `;
             scrollContainer.appendChild(titleSlide);
@@ -471,6 +490,7 @@
             infoSlide.innerHTML = `
                 <div class="mobile-project-title">${projectData.title}</div>
                 <div class="mobile-project-meta">${projectData.location} — ${projectData.year}<br>${projectData.category}</div>
+                <div class="mobile-project-credit">${projectData.credits}</div>
             `;
             mobileProjectView.appendChild(infoSlide);
 
