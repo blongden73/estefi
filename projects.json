@@ -1,4 +1,23 @@
-{    
+{   
+    "handm-move": {
+    "client": "More Digital x H&M Move",  
+    "title": "H&M Move",
+    "location": "Stokholm",
+    "year": "2026",
+    "credits": "Creative Director - Zowie Bubalo | More Digital",
+    "category": "FASHION",
+    "media": [
+      { "type": "video", "src": "/new-images/hm/hm-1.mp4", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-2.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-3.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-4.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-5.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-6.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-7.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-8.jpg", "padded": false },
+      { "type": "image", "src": "/new-images/hm/hm-9.jpg", "padded": false }
+    ]
+    },
     "spanx-red-shop": {
     "client": "Spanx",  
     "title": "25 years of Spanx",
@@ -19,24 +38,39 @@
       { "type": "image", "src": "/new-images/spanx/spanx-red-9.jpg", "padded": false }
     ]
     },
-    "handm-move": {
-    "client": "More Digital x H&M Move",  
-    "title": "H&M Move",
-    "location": "Stokholm",
+    "dts-longevity": {
+    "client": "DTS",  
+    "title": "Longevity",
+    "location": "Buenos Aires",
     "year": "2026",
-    "credits": "Creative Director - Zowie Bubalo | More Digital",
+    "credits": "",
     "category": "FASHION",
-    "media": [
-      { "type": "video", "src": "/new-images/hm/hm-1.mp4", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-2.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-3.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-4.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-5.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-6.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-7.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-8.jpg", "padded": false },
-      { "type": "image", "src": "/new-images/hm/hm-9.jpg", "padded": false }
-    ]
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-longevity-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-longevity-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-longevity-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-longevity-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-longevity-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-longevity-6.jpg", "padded": false }
+      ]
+    },
+    "dts-high-tech": {
+    "client": "DTS",  
+    "title": "Hi-teck",
+    "location": "Buenos Aires",
+    "year": "2026",
+    "credits": "",
+    "category": "FASHION",
+      "media": [
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-2.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-3.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-4.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-5.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-6.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-8.jpg", "padded": false },
+        { "type": "image", "src": "/new-images/dts/dts-hiteck-9.jpg", "padded": false }
+      ]
     },
     "sana-jardin": {
       "client": "Sana Jardin",  
@@ -60,24 +94,6 @@
         { "type": "image", "src": "/new-images/sana-jardin/sana-jardin-11.jpg", "padded": false }
       ]
     },
-    "dts-high-tech": {
-      "client": "DTS",  
-      "title": "Hi-teck",
-      "location": "Buenos Aires",
-      "year": "2026",
-      "credits": "",
-      "category": "FASHION",
-        "media": [
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-1.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-2.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-3.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-4.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-5.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-6.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-8.jpg", "padded": false },
-          { "type": "image", "src": "/new-images/dts/dts-hiteck-9.jpg", "padded": false }
-        ]
-      },
     "bumble": {
       "client": "Bumble",  
       "title": "Bumble BFF Campaign",
